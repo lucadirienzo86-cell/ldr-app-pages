@@ -1,64 +1,103 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="it" data-type="software">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="page-type" content="software">
+<meta name="site-kind" content="software">
 <title>Consulenza & Audit AI — AgentiAI Italia</title>
 <meta name="description" content="Audit AI con il metodo 'diagnosi prima della cura': analizziamo i tuoi processi e indichiamo lo strumento giusto, senza doverlo costruire subito. Metodo appreso, non ancora applicato con un cliente pagante reale.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
     --green:#2e7d32;
     --green-dark:#1b5e20;
+    --green-light:#e8f5e9;
     --cream:#f5f5f0;
     --ink:#1a1a1a;
     --gray:#5a5a5a;
     --border:#e2e2da;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
   body{
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     color:var(--ink);
     background:var(--cream);
     line-height:1.6;
+    -webkit-font-smoothing:antialiased;
   }
-  .wrap{max-width:960px;margin:0 auto;padding:0 24px;}
+  h1,h2,h3,h4{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;font-weight:800;letter-spacing:-0.01em;}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 32px;}
+
+  a.skip-link{position:absolute;left:-9999px;top:0;background:var(--ink);color:#fff;padding:10px 16px;z-index:200;}
+  a.skip-link:focus{left:12px;top:12px;}
+
   header{
     background:var(--ink);
     color:#fff;
-    padding:14px 0;
+    padding:16px 0;
+    position:sticky;top:0;z-index:50;
   }
   header .wrap{display:flex;justify-content:space-between;align-items:center;}
-  .logo{font-weight:700;font-size:1.1rem;color:#fff;text-decoration:none;}
+  .logo{font-weight:800;font-size:1.1rem;color:#fff;text-decoration:none;}
   .logo span{color:#8bc34a;}
-  nav a{color:#ccc;text-decoration:none;margin-left:24px;font-size:0.92rem;}
+  nav{display:flex;align-items:center;}
+  nav a{
+    position:relative;
+    color:#ccc;text-decoration:none;margin-left:28px;font-size:0.9rem;font-weight:500;
+    padding-bottom:4px;
+  }
+  nav a::after{
+    content:"";position:absolute;left:0;bottom:0;width:0;height:1.5px;background:#8bc34a;
+    transition:width .25s ease;
+  }
   nav a:hover{color:#fff;}
+  nav a:hover::after{width:100%;}
 
   .hero{
-    padding:72px 0 56px;
+    padding:88px 0 64px;
     text-align:center;
     border-bottom:1px solid var(--border);
+    overflow:hidden;
   }
+  [data-enter] .enter-item{
+    opacity:0;
+    transform:translateY(16px);
+    animation:enterUp .7s cubic-bezier(.16,1,.3,1) forwards;
+  }
+  [data-enter] .enter-item:nth-child(1){animation-delay:.02s;}
+  [data-enter] .enter-item:nth-child(2){animation-delay:.12s;}
+  [data-enter] .enter-item:nth-child(3){animation-delay:.22s;}
+  @keyframes enterUp{to{opacity:1;transform:translateY(0);}}
+  @media (prefers-reduced-motion:reduce){
+    [data-enter] .enter-item{animation:none;opacity:1;transform:none;}
+  }
+
   .badge{
     display:inline-block;
     background:#e8f5e9;
     color:var(--green-dark);
     padding:6px 14px;
     border-radius:20px;
-    font-size:0.8rem;
-    font-weight:600;
-    letter-spacing:0.02em;
-    margin-bottom:20px;
+    font-size:0.78rem;
+    font-weight:700;
+    letter-spacing:0.03em;
+    margin-bottom:22px;
+    max-width:90%;
   }
   .hero h1{
-    font-size:2.4rem;
-    line-height:1.15;
+    font-size:2.5rem;
+    line-height:1.16;
     margin-bottom:18px;
-    letter-spacing:-0.01em;
+    letter-spacing:-0.02em;
   }
   .hero p.lead{
-    font-size:1.1rem;
+    font-size:1.12rem;
     color:var(--gray);
-    max-width:640px;
+    max-width:660px;
     margin:0 auto 32px;
   }
   .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
@@ -69,11 +108,14 @@
     text-decoration:none;
     font-weight:600;
     font-size:0.95rem;
-    transition:opacity 0.15s;
+    transition:transform .18s ease, box-shadow .18s ease, opacity .18s ease;
   }
-  .btn:hover{opacity:0.85;}
   .btn-primary{background:var(--green);color:#fff;}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(46,125,50,0.25);}
+  .btn-primary:active{transform:translateY(0) scale(0.98);}
   .btn-secondary{background:#fff;color:var(--ink);border:1px solid var(--border);}
+  .btn-secondary:hover{transform:translateY(-2px);border-color:var(--ink);}
+  .btn-secondary:active{transform:translateY(0) scale(0.98);}
 
   .proof{
     display:flex;
@@ -87,9 +129,9 @@
   }
   .proof strong{color:var(--ink);display:block;font-size:1.3rem;}
 
-  section{padding:56px 0;}
-  section h2{font-size:1.7rem;margin-bottom:12px;}
-  section .section-lead{color:var(--gray);max-width:600px;margin-bottom:36px;}
+  section{padding:64px 0;}
+  section h2{font-size:1.75rem;margin-bottom:12px;}
+  section .section-lead{color:var(--gray);max-width:620px;margin-bottom:36px;}
 
   .grid{
     display:grid;
@@ -101,16 +143,22 @@
     border:1px solid var(--border);
     border-radius:12px;
     padding:26px;
+    transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
   }
-  .card h3{font-size:1.1rem;margin-bottom:10px;}
+  .card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 14px 28px rgba(26,26,26,0.08);
+    border-color:var(--green);
+  }
+  .card h3{font-size:1.1rem;margin-bottom:10px;font-weight:700;}
   .card p{color:var(--gray);font-size:0.93rem;margin-bottom:12px;}
   .status{
     display:inline-block;
-    font-size:0.74rem;
+    font-size:0.72rem;
     font-weight:700;
     padding:3px 10px;
     border-radius:12px;
-    letter-spacing:0.02em;
+    letter-spacing:0.03em;
   }
   .status-live{background:#e8f5e9;color:var(--green-dark);}
   .status-pilot{background:#fff3e0;color:#e65100;}
@@ -122,9 +170,50 @@
     border-radius:10px;
     padding:20px 22px;
     margin-bottom:12px;
+    transition:transform .18s ease, box-shadow .18s ease;
   }
-  .faq-item h4{font-size:0.98rem;margin-bottom:8px;}
+  .faq-item:hover{transform:translateY(-2px);box-shadow:0 10px 20px rgba(26,26,26,0.05);}
+  .faq-item h4{font-size:0.98rem;margin-bottom:8px;font-weight:700;}
   .faq-item p{font-size:0.9rem;color:var(--gray);margin:0;}
+
+  /* --- 3-step SVG diagram: chiamata diagnostica -> mappatura processi -> report scritto --- */
+  .diagram{
+    margin:8px 0 44px;
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:36px 28px 28px;
+  }
+  .diagram svg{display:block;width:100%;height:auto;}
+  .diagram-node-circle{fill:var(--green);transition:fill .2s ease;}
+  .diagram-node-group:hover .diagram-node-circle{fill:var(--green-dark);}
+  .diagram-node-group{cursor:default;}
+  .diagram-label{
+    font-family:'Inter',sans-serif;
+    font-weight:700;
+    font-size:14px;
+    fill:var(--ink);
+  }
+  .diagram-sublabel{
+    font-family:'Inter',sans-serif;
+    font-weight:400;
+    font-size:11.5px;
+    fill:var(--gray);
+  }
+  .diagram-line{
+    stroke:var(--border);
+    stroke-width:2;
+  }
+  .diagram-pulse{
+    stroke:var(--green);
+    stroke-width:2;
+    stroke-dasharray:8 14;
+    animation:dashMove 3s linear infinite;
+  }
+  @keyframes dashMove{to{stroke-dashoffset:-44;}}
+  @media (prefers-reduced-motion:reduce){
+    .diagram-pulse{animation:none;}
+  }
 
   .process{background:#fff;}
   .steps{
@@ -133,8 +222,10 @@
     gap:24px;
     margin-top:28px;
   }
+  .step{transition:transform .2s ease;}
+  .step:hover{transform:translateY(-3px);}
   .step-num{
-    width:32px;height:32px;
+    width:34px;height:34px;
     border-radius:50%;
     background:var(--green);
     color:#fff;
@@ -142,15 +233,17 @@
     font-weight:700;
     margin-bottom:12px;
     font-size:0.9rem;
+    transition:background .2s ease;
   }
-  .step h4{font-size:1rem;margin-bottom:6px;}
+  .step:hover .step-num{background:var(--green-dark);}
+  .step h4{font-size:1rem;margin-bottom:6px;font-weight:700;}
   .step p{font-size:0.88rem;color:var(--gray);}
 
   .honest-box{
     background:#fff8e1;
     border:1px solid #ffe082;
     border-radius:10px;
-    padding:20px 24px;
+    padding:22px 26px;
     font-size:0.9rem;
     color:#5d4a00;
     margin-top:24px;
@@ -161,10 +254,11 @@
     background:var(--ink);
     color:#fff;
     text-align:center;
-    padding:60px 0;
+    padding:72px 0;
   }
   .cta-final h2{color:#fff;margin-bottom:12px;}
   .cta-final p{color:#bbb;margin-bottom:28px;max-width:500px;margin-left:auto;margin-right:auto;}
+  .cta-final .btn-primary:hover{box-shadow:0 8px 18px rgba(46,125,50,0.4);}
 
   footer{
     background:#fff;
@@ -177,12 +271,18 @@
   footer a{color:var(--gray);text-decoration:underline;}
 
   @media (max-width:640px){
+    .wrap{padding:0 20px;}
+    .hero{padding:56px 0 48px;}
     .hero h1{font-size:1.8rem;}
     .proof{gap:24px;}
+    nav a{margin-left:16px;font-size:0.82rem;}
+    .diagram{padding:24px 16px 18px;}
   }
 </style>
 </head>
 <body>
+
+<a href="#main" class="skip-link">Vai al contenuto</a>
 
 <header>
   <div class="wrap">
@@ -197,12 +297,14 @@
   </div>
 </header>
 
-<section class="hero">
+<main id="main">
+
+<section class="hero" data-enter>
   <div class="wrap">
-    <span class="badge status-method" style="background:#e3f2fd;color:#0d47a1;">METODO APPRESO — NON ANCORA APPLICATO CON UN CLIENTE PAGANTE</span>
-    <h1>Diagnosi prima della cura: scopri dove automatizzare prima di spendere</h1>
-    <p class="lead">Un audit che analizza i tuoi processi aziendali e indica lo strumento AI giusto per ciascuno — senza doverlo costruire subito. Prima capisci, poi decidi se e cosa costruire.</p>
-    <div class="cta-row">
+    <span class="badge status-method enter-item" style="background:#e3f2fd;color:#0d47a1;">METODO APPRESO — NON ANCORA APPLICATO CON UN CLIENTE PAGANTE</span>
+    <h1 class="enter-item">Diagnosi prima della cura: scopri dove automatizzare prima di spendere</h1>
+    <p class="lead enter-item">Un audit che analizza i tuoi processi aziendali e indica lo strumento AI giusto per ciascuno — senza doverlo costruire subito. Prima capisci, poi decidi se e cosa costruire.</p>
+    <div class="cta-row enter-item">
       <a href="mailto:info@rootsystem.it" class="btn btn-primary">Richiedi il primo audit gratuito</a>
       <a href="#come-funziona" class="btn btn-secondary">Guarda come funziona</a>
     </div>
@@ -228,6 +330,37 @@
   <div class="wrap">
     <h2>Come funziona l'audit</h2>
     <p class="section-lead">Niente proposta commerciale travestita da audit: prima la diagnosi, poi — solo se vuoi — la cura.</p>
+
+    <div class="diagram" role="img" aria-label="Diagramma: chiamata diagnostica porta alla mappatura processi, che porta al report scritto con priorità">
+      <svg viewBox="0 0 760 180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+        <line x1="120" y1="60" x2="380" y2="60" class="diagram-line"/>
+        <line x1="120" y1="60" x2="380" y2="60" class="diagram-pulse"/>
+        <line x1="380" y1="60" x2="640" y2="60" class="diagram-line"/>
+        <line x1="380" y1="60" x2="640" y2="60" class="diagram-pulse" style="animation-delay:-1s;"/>
+
+        <g class="diagram-node-group">
+          <circle cx="120" cy="60" r="28" class="diagram-node-circle"/>
+          <text x="120" y="66" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-weight="700" font-size="20">1</text>
+          <text x="120" y="118" text-anchor="middle" class="diagram-label">Chiamata diagnostica</text>
+          <text x="120" y="138" text-anchor="middle" class="diagram-sublabel">Come lavora oggi l'azienda</text>
+        </g>
+
+        <g class="diagram-node-group">
+          <circle cx="380" cy="60" r="28" class="diagram-node-circle"/>
+          <text x="380" y="66" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-weight="700" font-size="20">2</text>
+          <text x="380" y="118" text-anchor="middle" class="diagram-label">Mappatura processi</text>
+          <text x="380" y="138" text-anchor="middle" class="diagram-sublabel">Dove un intervento ha impatto</text>
+        </g>
+
+        <g class="diagram-node-group">
+          <circle cx="640" cy="60" r="28" class="diagram-node-circle"/>
+          <text x="640" y="66" text-anchor="middle" fill="#fff" font-family="Inter,sans-serif" font-weight="700" font-size="20">3</text>
+          <text x="640" y="118" text-anchor="middle" class="diagram-label">Report scritto</text>
+          <text x="640" y="138" text-anchor="middle" class="diagram-sublabel">Priorità, non lista generica</text>
+        </g>
+      </svg>
+    </div>
+
     <div class="steps">
       <div class="step">
         <div class="step-num">1</div>
@@ -303,6 +436,8 @@
     </div>
   </div>
 </section>
+
+</main>
 
 <div class="cta-final" id="contatti">
   <div class="wrap">
