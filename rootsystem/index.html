@@ -1,258 +1,349 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="it" data-type="service" data-radius="soft" data-buttons="solid" data-motion="on">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="page-type" content="service">
+<meta name="site-kind" content="other">
 <title>AgentiAI Italia — Automazione e Agenti AI per il tuo business</title>
 <meta name="description" content="Agenzia italiana AI-native: automazione, agenti AI, sviluppo web ed e-commerce. Scope scritto, preventivo prima di iniziare, consegna a milestone fisse.">
+<meta name="theme-color" content="#1a1a1a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
     --green:#2e7d32;
     --green-dark:#1b5e20;
-    --cream:#f5f5f0;
+    --green-light:#e8f5e9;
+    --green-tint:#f1f8f1;
+    --cream:#faf9f6;
     --ink:#1a1a1a;
     --gray:#5a5a5a;
-    --border:#e2e2da;
+    --border:#e3e1da;
+    --surface:#ffffff;
+    --radius-lg:16px;
+    --radius-md:12px;
+    --radius-sm:9px;
+    --font-head:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    --font-body:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    --shadow-sm:0 1px 2px rgba(20,20,10,.04),0 1px 1px rgba(20,20,10,.03);
+    --shadow-md:0 10px 24px -8px rgba(20,20,10,.14),0 2px 6px rgba(20,20,10,.06);
+    --ease:cubic-bezier(.22,.8,.3,1);
   }
   *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
   body{
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-family:var(--font-body);
     color:var(--ink);
     background:var(--cream);
-    line-height:1.6;
+    line-height:1.62;
+    -webkit-font-smoothing:antialiased;
   }
-  .wrap{max-width:960px;margin:0 auto;padding:0 24px;}
+  h1,h2,h3,h4{font-family:var(--font-head);letter-spacing:-0.015em;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+  a{color:inherit;}
+  img,svg{display:block;}
+
+  .skip-link{position:absolute;left:-999px;top:0;background:var(--ink);color:#fff;padding:10px 18px;border-radius:0 0 8px 0;z-index:200;}
+  .skip-link:focus{left:0;}
+
+  /* ---------- header ---------- */
   header{
     background:var(--ink);
     color:#fff;
-    padding:14px 0;
+    padding:16px 0;
+    position:sticky;top:0;z-index:100;
   }
   header .wrap{display:flex;justify-content:space-between;align-items:center;}
-  .logo{font-weight:700;font-size:1.1rem;color:#fff;text-decoration:none;}
+  .logo{font-family:var(--font-head);font-weight:700;font-size:1.12rem;color:#fff;text-decoration:none;letter-spacing:-0.01em;}
   .logo span{color:#8bc34a;}
-  nav a{color:#ccc;text-decoration:none;margin-left:24px;font-size:0.92rem;}
+  nav{display:flex;align-items:center;gap:4px;}
+  nav a{
+    position:relative;
+    color:#cfcfcf;text-decoration:none;margin-left:22px;font-size:.92rem;font-weight:500;
+    padding:4px 0;
+    transition:color .15s var(--ease);
+  }
+  nav a::after{
+    content:'';position:absolute;left:0;right:0;bottom:-2px;height:1px;background:#8bc34a;
+    transform:scaleX(0);transform-origin:left;transition:transform .25s var(--ease);
+  }
   nav a:hover{color:#fff;}
+  nav a:hover::after{transform:scaleX(1);}
 
-  .hero{
-    padding:72px 0 56px;
-    text-align:center;
-    border-bottom:1px solid var(--border);
-  }
-  .badge{
-    display:inline-block;
-    background:#e8f5e9;
-    color:var(--green-dark);
-    padding:6px 14px;
-    border-radius:20px;
-    font-size:0.8rem;
-    font-weight:600;
-    letter-spacing:0.02em;
-    margin-bottom:20px;
-  }
-  .hero h1{
-    font-size:2.4rem;
-    line-height:1.15;
-    margin-bottom:18px;
-    letter-spacing:-0.01em;
-  }
-  .hero p.lead{
-    font-size:1.1rem;
-    color:var(--gray);
-    max-width:640px;
-    margin:0 auto 32px;
-  }
-  .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+  /* ---------- buttons ---------- */
   .btn{
     display:inline-block;
-    padding:13px 26px;
-    border-radius:8px;
+    padding:14px 28px;
+    border-radius:var(--radius-sm);
     text-decoration:none;
     font-weight:600;
-    font-size:0.95rem;
-    transition:opacity 0.15s;
+    font-size:.95rem;
+    font-family:var(--font-head);
+    transition:transform .18s var(--ease),box-shadow .18s var(--ease),background-color .18s var(--ease);
+    border:1px solid transparent;
   }
-  .btn:hover{opacity:0.85;}
-  .btn-primary{background:var(--green);color:#fff;}
-  .btn-secondary{background:#fff;color:var(--ink);border:1px solid var(--border);}
+  .btn-primary{background:var(--green);color:#fff;box-shadow:var(--shadow-sm);}
+  .btn-primary:hover{background:var(--green-dark);transform:translateY(-2px);box-shadow:var(--shadow-md);}
+  .btn-primary:active{transform:translateY(0);box-shadow:var(--shadow-sm);}
+  .btn-secondary{background:var(--surface);color:var(--ink);border-color:var(--border);}
+  .btn-secondary:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);border-color:#cfcdc2;}
+  .btn-secondary:active{transform:translateY(0);box-shadow:none;}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;}
 
+  /* ---------- entrance animation ---------- */
+  [data-enter] .m-enter{opacity:0;transform:translateY(16px);animation:enterUp .7s var(--ease) forwards;}
+  [data-enter] .m-enter:nth-child(1){animation-delay:.02s;}
+  [data-enter] .m-enter:nth-child(2){animation-delay:.12s;}
+  [data-enter] .m-enter:nth-child(3){animation-delay:.22s;}
+  [data-enter] .m-enter:nth-child(4){animation-delay:.32s;}
+  [data-enter] .hero-visual{opacity:0;transform:translateY(10px) scale(.98);animation:enterFade .8s var(--ease) forwards;animation-delay:.3s;}
+  @keyframes enterUp{to{opacity:1;transform:translateY(0);}}
+  @keyframes enterFade{to{opacity:1;transform:translateY(0) scale(1);}}
+
+  /* ---------- hero ---------- */
+  .hero{padding:76px 0 64px;border-bottom:1px solid var(--border);overflow:hidden;}
+  .hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;}
+  .badge{
+    display:inline-block;
+    background:var(--green-light);
+    color:var(--green-dark);
+    padding:7px 16px;
+    border-radius:20px;
+    font-size:.78rem;
+    font-weight:700;
+    letter-spacing:.04em;
+    margin-bottom:22px;
+  }
+  .hero h1{
+    font-size:clamp(2.1rem,3.2vw,2.75rem);
+    line-height:1.14;
+    font-weight:800;
+    margin-bottom:20px;
+  }
+  .hero p.lead{
+    font-size:1.12rem;
+    color:var(--gray);
+    max-width:560px;
+    margin:0 0 32px;
+  }
+
+  .hero-visual{position:relative;width:100%;max-width:380px;aspect-ratio:320/300;margin:0 auto;}
+  .hero-visual svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;}
+  .flow-line{fill:none;stroke:var(--border);stroke-width:2;}
+  .flow-dot{fill:var(--green);}
+  .pulse-dot{fill:var(--green);filter:drop-shadow(0 0 0 rgba(46,125,50,0));}
+  .pulse-1{offset-path:path('M50 150 C 130 150, 150 64, 236 64');animation:runPulse 3.2s linear infinite;}
+  .pulse-2{offset-path:path('M50 150 C 130 150, 150 150, 236 150');animation:runPulse 3.6s linear infinite .4s;}
+  .pulse-3{offset-path:path('M50 150 C 130 150, 150 236, 236 236');animation:runPulse 4s linear infinite .8s;}
+  @keyframes runPulse{0%{offset-distance:0%;opacity:0;}8%{opacity:1;}92%{opacity:1;}100%{offset-distance:100%;opacity:0;}}
+  .hero-node{
+    position:absolute;width:48px;height:48px;border-radius:50%;
+    background:var(--surface);border:1px solid var(--border);box-shadow:var(--shadow-sm);
+    display:flex;align-items:center;justify-content:center;
+    transform:translate(-50%,-50%);
+  }
+  .hero-node img, .hero-node svg{width:22px;height:22px;}
+  .hero-node.core{width:60px;height:60px;background:var(--ink);left:15.6%;top:50%;}
+  .hero-node.core svg{width:26px;height:26px;}
+  .hero-node.n1{left:73.8%;top:21.3%;}
+  .hero-node.n2{left:73.8%;top:50%;}
+  .hero-node.n3{left:73.8%;top:78.6%;}
+  .hero-caption{position:absolute;bottom:-34px;left:0;right:0;text-align:center;font-size:.78rem;color:var(--gray);font-weight:500;}
+
+  /* ---------- proof strip ---------- */
   .proof{
     display:flex;
-    justify-content:center;
-    gap:40px;
+    gap:48px;
     flex-wrap:wrap;
-    padding:28px 0;
-    font-size:0.85rem;
+    padding:32px 0;
+    font-size:.85rem;
     color:var(--gray);
     border-bottom:1px solid var(--border);
   }
-  .proof strong{color:var(--ink);display:block;font-size:1.3rem;}
+  .proof strong{color:var(--ink);display:block;font-size:1.5rem;font-family:var(--font-head);font-weight:800;}
 
-  section{padding:56px 0;}
-  section h2{font-size:1.7rem;margin-bottom:12px;}
-  section .section-lead{color:var(--gray);max-width:600px;margin-bottom:36px;}
+  /* ---------- sections ---------- */
+  section{padding:68px 0;}
+  section h2{font-size:clamp(1.6rem,2.2vw,2rem);margin-bottom:12px;font-weight:800;}
+  section .section-lead{color:var(--gray);max-width:600px;margin-bottom:40px;font-size:1.02rem;}
 
-  .grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:20px;
-  }
-  .card{
-    background:#fff;
+  /* ---------- one card family ---------- */
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;}
+  .panel, .card{
+    background:var(--surface);
     border:1px solid var(--border);
-    border-radius:12px;
-    padding:26px;
+    border-radius:var(--radius-md);
+    padding:28px;
+    transition:transform .2s var(--ease),box-shadow .2s var(--ease);
   }
-  .card h3{font-size:1.1rem;margin-bottom:10px;}
-  .card p{color:var(--gray);font-size:0.93rem;margin-bottom:12px;}
-  .card a.card-link{font-size:0.88rem;font-weight:600;color:var(--green-dark);text-decoration:none;}
-  .card a.card-link:hover{text-decoration:underline;}
+  .card{display:flex;flex-direction:column;}
+  a.card-hover{text-decoration:none;color:inherit;display:block;}
+  .card.hoverable:hover, a.card-hover:hover .card{transform:translateY(-2px);box-shadow:var(--shadow-md);}
+  .card h3{font-size:1.12rem;margin-bottom:10px;font-weight:700;}
+  .card p{color:var(--gray);font-size:.94rem;margin-bottom:14px;}
+  .card-link{font-size:.88rem;font-weight:600;color:var(--green-dark);text-decoration:none;position:relative;display:inline-block;margin-top:auto;}
+  .card-link::after{content:'';position:absolute;left:0;right:0;bottom:-3px;height:1px;background:var(--green-dark);transform:scaleX(0);transform-origin:left;transition:transform .25s var(--ease);}
+  .card-link:hover::after{transform:scaleX(1);}
+
   .status{
     display:inline-block;
-    font-size:0.74rem;
+    font-size:.72rem;
     font-weight:700;
-    padding:3px 10px;
+    padding:4px 11px;
     border-radius:12px;
-    letter-spacing:0.02em;
+    letter-spacing:.03em;
+    margin-bottom:14px;
   }
-  .status-live{background:#e8f5e9;color:var(--green-dark);}
-  .status-pilot{background:#fff3e0;color:#e65100;}
-  .status-method{background:#e3f2fd;color:#0d47a1;}
+  .status-live{background:var(--green-light);color:var(--green-dark);}
+  .status-pilot{background:#fdf1e0;color:#9a5a10;}
+  .status-method{background:#e7eef7;color:#2c4d78;}
 
+  .tool-row{display:flex;gap:8px;margin-bottom:16px;}
+  .tool-icon{
+    width:34px;height:34px;border-radius:50%;
+    background:var(--cream);border:1px solid var(--border);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .tool-icon img, .tool-icon svg{width:17px;height:17px;}
+  .tool-icon.generic svg{stroke:var(--gray);width:16px;height:16px;}
+
+  /* ---------- honest note : same card family, type-led, no colour callout ---------- */
+  .note{margin-top:24px;}
+  .note p{font-size:.95rem;color:var(--gray);}
+  .note strong{color:var(--ink);font-family:var(--font-head);}
+
+  /* ---------- case ---------- */
+  .case{margin-top:28px;}
+  .case h3{margin-bottom:8px;font-size:1.3rem;}
+  .case .meta{font-size:.86rem;color:var(--gray);margin-bottom:18px;}
+  .case-stack{display:flex;gap:10px;margin-top:20px;}
+
+  /* ---------- process / flow diagram ---------- */
+  .flow{margin-top:44px;}
+  .flow-nodes{display:grid;grid-template-columns:repeat(4,1fr);position:relative;}
+  .flow-track{
+    position:absolute;top:19px;left:calc(12.5% );right:calc(12.5%);height:2px;background:var(--border);z-index:0;
+  }
+  .flow-track .pulse{
+    position:absolute;top:-3px;width:8px;height:8px;border-radius:50%;background:var(--green);
+    animation:trackPulse 3.4s linear infinite;
+  }
+  @keyframes trackPulse{0%{left:0%;opacity:0;}6%{opacity:1;}94%{opacity:1;}100%{left:100%;opacity:0;}}
+  .flow-node{position:relative;z-index:1;text-align:left;padding-right:20px;}
+  .step-num{
+    width:40px;height:40px;
+    border-radius:50%;
+    background:var(--ink);
+    color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-weight:700;font-family:var(--font-head);
+    margin-bottom:16px;
+    font-size:.95rem;
+  }
+  .flow-node h4{font-size:1rem;margin-bottom:6px;font-weight:700;}
+  .flow-node p{font-size:.88rem;color:var(--gray);}
+
+  /* ---------- pricing ---------- */
   .pricing-table{
     width:100%;
     border-collapse:collapse;
-    background:#fff;
-    border-radius:12px;
+    background:var(--surface);
+    border-radius:var(--radius-md);
     overflow:hidden;
     border:1px solid var(--border);
-    margin-top:28px;
-    font-size:0.88rem;
+    margin-top:30px;
+    font-size:.9rem;
   }
   .pricing-table th{
     background:var(--ink);
     color:#fff;
     text-align:left;
-    padding:14px 16px;
-    font-size:0.8rem;
-    letter-spacing:0.02em;
+    padding:15px 18px;
+    font-size:.8rem;
+    letter-spacing:.03em;
+    font-family:var(--font-head);
   }
   .pricing-table td{
-    padding:14px 16px;
+    padding:16px 18px;
     border-bottom:1px solid var(--border);
     color:var(--gray);
     vertical-align:top;
+    transition:background-color .15s var(--ease);
   }
   .pricing-table tr:last-child td{border-bottom:none;}
-  .pricing-table td:first-child{color:var(--ink);font-weight:600;}
-  .pricing-note{font-size:0.85rem;color:var(--gray);margin-top:16px;}
+  .pricing-table tr:hover td{background:var(--green-tint);}
+  .pricing-table td:first-child{color:var(--ink);font-weight:700;font-family:var(--font-head);}
+  .pricing-note{font-size:.88rem;color:var(--gray);margin-top:18px;}
 
-  .faq-item{
-    background:#fff;
-    border:1px solid var(--border);
-    border-radius:10px;
-    padding:20px 22px;
-    margin-bottom:12px;
-  }
-  .faq-item h4{font-size:0.98rem;margin-bottom:8px;}
-  .faq-item p{font-size:0.9rem;color:var(--gray);margin:0;}
+  /* ---------- faq ---------- */
+  .faq-item{margin-bottom:14px;}
+  .faq-item h4{font-size:1rem;margin-bottom:8px;font-weight:700;}
+  .faq-item p{font-size:.92rem;color:var(--gray);margin:0;}
 
-  .founder{
-    display:flex;
-    gap:24px;
-    align-items:center;
-    background:#fff;
-    border:1px solid var(--border);
-    border-radius:12px;
-    padding:28px;
-    margin-top:28px;
-    flex-wrap:wrap;
-  }
+  /* ---------- founder ---------- */
+  .founder{display:flex;gap:26px;align-items:center;margin-top:0;flex-wrap:wrap;}
   .founder-avatar{
-    width:72px;height:72px;
+    width:76px;height:76px;
     border-radius:50%;
     background:var(--green);
     color:#fff;
     display:flex;align-items:center;justify-content:center;
-    font-weight:700;
-    font-size:1.4rem;
+    font-weight:800;font-family:var(--font-head);
+    font-size:1.45rem;
     flex-shrink:0;
+    transition:transform .2s var(--ease);
+    outline:3px solid var(--green-light);
+    outline-offset:3px;
   }
-  .founder h3{margin-bottom:4px;}
-  .founder .role{font-size:0.85rem;color:var(--green-dark);font-weight:600;margin-bottom:10px;}
-  .founder p{font-size:0.9rem;color:var(--gray);}
+  .founder:hover .founder-avatar{transform:scale(1.04);}
+  .founder h3{margin-bottom:4px;font-size:1.2rem;}
+  .founder .role{font-size:.86rem;color:var(--green-dark);font-weight:700;margin-bottom:10px;}
+  .founder p{font-size:.92rem;color:var(--gray);}
 
-  .process{background:#fff;}
-  .steps{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-    gap:24px;
-    margin-top:28px;
-  }
-  .step-num{
-    width:32px;height:32px;
-    border-radius:50%;
-    background:var(--green);
-    color:#fff;
-    display:flex;align-items:center;justify-content:center;
-    font-weight:700;
-    margin-bottom:12px;
-    font-size:0.9rem;
-  }
-  .step h4{font-size:1rem;margin-bottom:6px;}
-  .step p{font-size:0.88rem;color:var(--gray);}
-
-  .honest-box{
-    background:#fff8e1;
-    border:1px solid #ffe082;
-    border-radius:10px;
-    padding:20px 24px;
-    font-size:0.9rem;
-    color:#5d4a00;
-    margin-top:24px;
-  }
-  .honest-box strong{color:#3d3200;}
-
-  .case{
-    background:#fff;
-    border:1px solid var(--border);
-    border-radius:12px;
-    padding:28px;
-    margin-top:28px;
-  }
-  .case h3{margin-bottom:8px;}
-  .case .meta{font-size:0.85rem;color:var(--gray);margin-bottom:16px;}
-
-  .cta-final{
-    background:var(--ink);
-    color:#fff;
-    text-align:center;
-    padding:60px 0;
-  }
+  /* ---------- final cta ---------- */
+  .cta-final{background:var(--ink);color:#fff;padding:68px 0;}
+  .cta-final .wrap{text-align:left;max-width:640px;}
   .cta-final h2{color:#fff;margin-bottom:12px;}
-  .cta-final p{color:#bbb;margin-bottom:28px;max-width:500px;margin-left:auto;margin-right:auto;}
+  .cta-final p{color:#b8b8b8;margin-bottom:30px;max-width:460px;}
 
-  footer{
-    background:#fff;
-    border-top:1px solid var(--border);
-    padding:32px 0;
-    font-size:0.85rem;
-    color:var(--gray);
-  }
+  /* ---------- footer ---------- */
+  footer{background:var(--surface);border-top:1px solid var(--border);padding:34px 0;font-size:.86rem;color:var(--gray);}
   footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
-  footer a{color:var(--gray);text-decoration:underline;}
+  footer a{color:var(--gray);text-decoration:none;position:relative;}
+  footer a::after{content:'';position:absolute;left:0;right:0;bottom:-2px;height:1px;background:var(--gray);transform:scaleX(0);transform-origin:left;transition:transform .25s var(--ease);}
+  footer a:hover{color:var(--ink);}
+  footer a:hover::after{transform:scaleX(1);}
 
+  @media (max-width:980px){
+    .hero .wrap{grid-template-columns:1fr;}
+    .hero-visual{max-width:320px;margin-top:8px;}
+    .flow-nodes{grid-template-columns:1fr;gap:28px;}
+    .flow-track{display:none;}
+  }
   @media (max-width:640px){
-    .hero h1{font-size:1.8rem;}
-    .proof{gap:24px;}
+    .wrap{padding:0 20px;}
+    .hero h1{font-size:1.9rem;}
+    .proof{gap:26px;}
+    .cta-final .wrap{text-align:left;}
+    nav{display:none;}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none !important;transition:none !important;}
+    [data-enter] .m-enter, [data-enter] .hero-visual{opacity:1;transform:none;}
   }
 </style>
 </head>
 <body>
 
+<a href="#main" class="skip-link">Vai al contenuto</a>
+
 <header>
   <div class="wrap">
     <a href="index.html" class="logo">Agenti<span>AI</span> Italia</a>
-    <nav>
+    <nav aria-label="Navigazione principale">
       <a href="#servizi">Servizi</a>
       <a href="#prezzi">Prezzi</a>
       <a href="#processo">Come lavoriamo</a>
@@ -262,22 +353,45 @@
   </div>
 </header>
 
-<section class="hero">
+<main id="main">
+
+<section class="hero" data-enter>
   <div class="wrap">
-    <span class="badge">AGENZIA AI-NATIVE ITALIANA</span>
-    <h1>Automazione e agenti AI che lavorano davvero per il tuo business</h1>
-    <p class="lead">Costruiamo agenti AI, siti web e integrazioni e-commerce. Scope scritto prima di iniziare, preventivo chiaro, consegna a milestone fisse — nessuna sorpresa in fattura.</p>
-    <div class="cta-row">
-      <a href="#contatti" class="btn btn-primary">Richiedi un audit gratuito</a>
-      <a href="#servizi" class="btn btn-secondary">Guarda i servizi</a>
+    <div>
+      <span class="badge m-enter">AGENZIA AI-NATIVE ITALIANA</span>
+      <h1 class="m-enter">Automazione e agenti AI che lavorano davvero per il tuo business</h1>
+      <p class="lead m-enter">Costruiamo agenti AI, siti web e integrazioni e-commerce. Scope scritto prima di iniziare, preventivo chiaro, consegna a milestone fisse — nessuna sorpresa in fattura.</p>
+      <div class="cta-row m-enter">
+        <a href="#contatti" class="btn btn-primary">Richiedi un audit gratuito</a>
+        <a href="#servizi" class="btn btn-secondary">Guarda i servizi</a>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <svg viewBox="0 0 320 300">
+        <path class="flow-line" d="M50 150 C 130 150, 150 64, 236 64"/>
+        <path class="flow-line" d="M50 150 C 130 150, 150 150, 236 150"/>
+        <path class="flow-line" d="M50 150 C 130 150, 150 236, 236 236"/>
+        <circle class="pulse-dot pulse-1" r="4"/>
+        <circle class="pulse-dot pulse-2" r="4"/>
+        <circle class="pulse-dot pulse-3" r="4"/>
+      </svg>
+      <div class="hero-node core">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#8bc34a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4 12H2M22 12h-2M19 5l-2 2M5 5l2 2M19 19l-2-2M5 19l2-2"/><circle cx="12" cy="12" r="5"/></svg>
+      </div>
+      <div class="hero-node n1"><img src="assets/icons/gmail.svg" alt="Gmail" width="22" height="22" style="filter:none;" onerror="this.style.display='none'"></div>
+      <div class="hero-node n2"><img src="assets/icons/googlecalendar.svg" alt="Google Calendar" width="22" height="22"></div>
+      <div class="hero-node n3"><img src="assets/icons/whatsapp.svg" alt="WhatsApp" width="22" height="22"></div>
+      <div class="hero-caption">Un agente, collegato ai tuoi strumenti reali</div>
     </div>
   </div>
 </section>
 
 <div class="proof">
-  <div><strong>3+</strong>siti pubblicati e live</div>
-  <div><strong>1</strong>e-commerce Shopify reale costruito</div>
-  <div><strong>100%</strong>lavoro scritto, nessun "si vedrà"</div>
+  <div class="wrap" style="display:flex;gap:48px;flex-wrap:wrap;">
+    <div><strong>3+</strong>siti pubblicati e live</div>
+    <div><strong>1</strong>e-commerce Shopify reale costruito</div>
+    <div><strong>100%</strong>lavoro scritto, nessun &ldquo;si vedr&agrave;&rdquo;</div>
+  </div>
 </div>
 
 <section id="servizi">
@@ -285,38 +399,61 @@
     <h2>Cosa facciamo</h2>
     <p class="section-lead">Non vendiamo servizi che non abbiamo mai testato. Ogni voce qui sotto è segnata con lo stato reale.</p>
     <div class="grid">
-      <div class="card">
-        <span class="status status-live">NOSTRO CORE</span>
-        <h3>Automazione &amp; Agenti AI</h3>
-        <p>Agenti AI che leggono email, gestiscono calendari, automatizzano processi ripetitivi di ufficio e backoffice. È il lavoro che facciamo ogni giorno, non una demo.</p>
-        <a href="agenti-ai.html" class="card-link">Scopri di più →</a>
-      </div>
-      <div class="card">
+      <a href="agenti-ai.html" class="card-hover">
+        <div class="card hoverable">
+          <span class="status status-live">NOSTRO CORE</span>
+          <h3>Automazione &amp; Agenti AI</h3>
+          <div class="tool-row" aria-hidden="true">
+            <span class="tool-icon"><img src="assets/icons/gmail.svg" alt="" width="17" height="17"></span>
+            <span class="tool-icon"><img src="assets/icons/googlecalendar.svg" alt="" width="17" height="17"></span>
+            <span class="tool-icon"><img src="assets/icons/whatsapp.svg" alt="" width="17" height="17"></span>
+          </div>
+          <p>Agenti AI che leggono email, gestiscono calendari, automatizzano processi ripetitivi di ufficio e backoffice. È il lavoro che facciamo ogni giorno, non una demo.</p>
+          <span class="card-link">Scopri di più →</span>
+        </div>
+      </a>
+      <div class="card hoverable">
         <span class="status status-live">PROVATO</span>
         <h3>Sviluppo Web</h3>
+        <div class="tool-row" aria-hidden="true">
+          <span class="tool-icon generic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><circle cx="6.5" cy="6.5" r=".6" fill="currentColor"/><circle cx="9" cy="6.5" r=".6" fill="currentColor"/></svg></span>
+        </div>
         <p>Siti e landing page costruiti e pubblicati, dal primo commit al deploy live. Niente template generico: scope definito, consegna verificata.</p>
       </div>
-      <div class="card">
-        <span class="status status-pilot">CASO PILOTA</span>
-        <h3>E-commerce (Shopify)</h3>
-        <p>Abbiamo costruito un e-commerce Shopify reale (frontend + integrazione Admin API) per un cliente del settore parafarmaceutico. Live e funzionante — in fase di completamento dell'integrazione ordini con il fornitore.</p>
-        <a href="ecommerce.html" class="card-link">Scopri di più →</a>
-      </div>
-      <div class="card">
+      <a href="ecommerce.html" class="card-hover">
+        <div class="card hoverable">
+          <span class="status status-pilot">CASO PILOTA</span>
+          <h3>E-commerce (Shopify)</h3>
+          <div class="tool-row" aria-hidden="true">
+            <span class="tool-icon"><img src="assets/icons/shopify.svg" alt="" width="18" height="18"></span>
+          </div>
+          <p>Abbiamo costruito un e-commerce Shopify reale (frontend + integrazione Admin API) per un cliente del settore parafarmaceutico. Live e funzionante — in fase di completamento dell'integrazione ordini con il fornitore.</p>
+          <span class="card-link">Scopri di più →</span>
+        </div>
+      </a>
+      <div class="card hoverable">
         <span class="status status-pilot">IN VALIDAZIONE</span>
         <h3>SEO &amp; Visibilità AI (GEO/AEO)</h3>
+        <div class="tool-row" aria-hidden="true">
+          <span class="tool-icon generic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"/><line x1="15.5" y1="15.5" x2="21" y2="21"/></svg></span>
+        </div>
         <p>Stiamo testando strumenti di audit SEO e ottimizzazione per i motori di risposta AI (ChatGPT, Perplexity). Non la vendiamo ancora come servizio finito: prima la validiamo su casi reali.</p>
       </div>
-      <div class="card">
-        <span class="status status-method">METODO APPRESO</span>
-        <h3>Consulenza &amp; Audit AI</h3>
-        <p>Approccio "diagnosi prima della cura": analizziamo dove un'azienda perde tempo/dati e indichiamo lo strumento AI giusto, senza dover costruire subito nulla. Metodo studiato da un percorso di formazione verticale, non ancora applicato da noi con un cliente pagante — primo audit gratuito come test reale.</p>
-        <a href="audit-ai.html" class="card-link">Scopri di più →</a>
-      </div>
+      <a href="audit-ai.html" class="card-hover">
+        <div class="card hoverable">
+          <span class="status status-method">METODO APPRESO</span>
+          <h3>Consulenza &amp; Audit AI</h3>
+          <div class="tool-row" aria-hidden="true">
+            <span class="tool-icon generic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></span>
+          </div>
+          <p>Approccio "diagnosi prima della cura": analizziamo dove un'azienda perde tempo/dati e indichiamo lo strumento AI giusto, senza dover costruire subito nulla. Metodo studiato da un percorso di formazione verticale, non ancora applicato da noi con un cliente pagante — primo audit gratuito come test reale.</p>
+          <span class="card-link">Scopri di più →</span>
+        </div>
+      </a>
     </div>
 
-    <div class="honest-box">
-      <strong>Perché lo scriviamo così esplicito:</strong> preferiamo dirti dove siamo solidi e dove stiamo ancora imparando, piuttosto che vendere una lista di servizi uguale per tutti. Se il tuo progetto richiede qualcosa che segnamo "in validazione", te lo diciamo chiaro prima di accettare l'incarico.
+    <div class="panel note">
+      <p><strong>Perché lo scriviamo così esplicito:</strong> preferiamo dirti dove siamo solidi e dove stiamo ancora imparando, piuttosto che vendere una lista di servizi uguale per tutti. Se il tuo progetto richiede qualcosa che segnamo "in validazione", te lo diciamo chiaro prima di accettare l'incarico.</p>
     </div>
   </div>
 </section>
@@ -324,11 +461,14 @@
 <section id="case-study" style="background:#fff;border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
   <div class="wrap">
     <h2>Un caso reale</h2>
-    <div class="case">
+    <div class="panel case">
       <span class="status status-pilot">E-COMMERCE PARAFARMACEUTICO</span>
-      <h3 style="margin-top:10px;">Negozio online di parafarmaci e integratori</h3>
+      <h3>Negozio online di parafarmaci e integratori</h3>
       <p class="meta">Shopify (backend) + frontend React · Obiettivo: uscire dalla guerra dei prezzi con contenuti di valore</p>
       <p>Sito costruito e pubblicato, con integrazione all'Admin API di Shopify per gestione prodotti e ordini. Il progetto è in corso: l'integrazione tecnica funziona, l'ultimo tratto dipende da un accordo commerciale con il fornitore logistico, non da un limite nostro.</p>
+      <div class="case-stack" aria-hidden="true">
+        <span class="tool-icon"><img src="assets/icons/shopify.svg" alt="" width="18" height="18"></span>
+      </div>
     </div>
   </div>
 </section>
@@ -337,26 +477,29 @@
   <div class="wrap">
     <h2>Come lavoriamo</h2>
     <p class="section-lead">Scope scritto prima di iniziare, preventivo fisso, nessuna ora fatturata a sorpresa.</p>
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <h4>Scoping scritto</h4>
-        <p>Definiamo per iscritto cosa costruiamo, prima di iniziare qualsiasi lavoro.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <h4>Preventivo chiaro</h4>
-        <p>Prezzo fisso a milestone, non a ore. Sai cosa paghi prima di iniziare.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <h4>Consegna verificata</h4>
-        <p>Ogni milestone viene testata e mostrata live, non solo "dichiarata pronta".</p>
-      </div>
-      <div class="step">
-        <div class="step-num">4</div>
-        <h4>Nessun layer account-manager</h4>
-        <p>Parli direttamente con chi costruisce, non con chi passa messaggi.</p>
+    <div class="flow">
+      <div class="flow-nodes">
+        <div class="flow-track" aria-hidden="true"><span class="pulse"></span></div>
+        <div class="flow-node">
+          <div class="step-num">1</div>
+          <h4>Scoping scritto</h4>
+          <p>Definiamo per iscritto cosa costruiamo, prima di iniziare qualsiasi lavoro.</p>
+        </div>
+        <div class="flow-node">
+          <div class="step-num">2</div>
+          <h4>Preventivo chiaro</h4>
+          <p>Prezzo fisso a milestone, non a ore. Sai cosa paghi prima di iniziare.</p>
+        </div>
+        <div class="flow-node">
+          <div class="step-num">3</div>
+          <h4>Consegna verificata</h4>
+          <p>Ogni milestone viene testata e mostrata live, non solo "dichiarata pronta".</p>
+        </div>
+        <div class="flow-node">
+          <div class="step-num">4</div>
+          <h4>Nessun layer account-manager</h4>
+          <p>Parli direttamente con chi costruisce, non con chi passa messaggi.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -402,27 +545,27 @@
   <div class="wrap">
     <h2>Domande frequenti</h2>
     <p class="section-lead">Le domande che ci fanno davvero i clienti, risposte senza giri di parole.</p>
-    <div class="faq-item">
+    <div class="panel faq-item">
       <h4>Quanto tempo serve per costruire un agente AI?</h4>
       <p>Dipende dal numero di sistemi da collegare. Un agente con una sola funzione (es. leggere e smistare email) richiede in genere 1-2 settimane; integrazioni con più sistemi (CRM, calendario, email insieme) richiedono di più. Il tempo esatto viene scritto nel preventivo, non stimato a voce.</p>
     </div>
-    <div class="faq-item">
+    <div class="panel faq-item">
       <h4>Lavorate solo con agenzie assicurative o anche altri settori?</h4>
       <p>Il nostro caso più maturo è nel settore assicurativo/finanziario (il nostro stesso backoffice), ma i principi di automazione e gli agenti AI non sono legati a un settore: il caso e-commerce (parafarmaceutico) lo dimostra. Valutiamo ogni progetto nel merito.</p>
     </div>
-    <div class="faq-item">
+    <div class="panel faq-item">
       <h4>Cosa succede se un servizio è segnato "in validazione" o "metodo appreso"?</h4>
       <p>Te lo diciamo chiaramente prima di accettare l'incarico. Se il tuo progetto ha bisogno esattamente di quel servizio, decidiamo insieme se procedere come test a condizioni trasparenti o se preferisci aspettare che lo validiamo su un altro caso prima.</p>
     </div>
-    <div class="faq-item">
+    <div class="panel faq-item">
       <h4>Fate siti e-commerce su Shopify o anche altre piattaforme?</h4>
       <p>Abbiamo esperienza reale e dimostrata su Shopify (frontend custom + Admin API). Non abbiamo ancora un caso reale su WooCommerce o altre piattaforme: se il tuo progetto lo richiede, lo diciamo prima di preventivare.</p>
     </div>
-    <div class="faq-item">
+    <div class="panel faq-item">
       <h4>Come funziona l'audit gratuito?</h4>
       <p>Una chiamata per capire i tuoi processi attuali, seguita da un elenco scritto di dove un agente AI o un'automazione farebbero la differenza reale — con stima di impatto e priorità. Nessun obbligo di procedere dopo.</p>
     </div>
-    <div class="faq-item">
+    <div class="panel faq-item">
       <h4>Garantite risultati (es. più traffico, più vendite)?</h4>
       <p>No, e nessuno può onestamente garantirlo. Garantiamo il lavoro scritto nello scope, testato prima della consegna, e la trasparenza totale su cosa è provato e cosa è ancora in fase di test.</p>
     </div>
@@ -432,7 +575,7 @@
 <section style="background:#fff;border-top:1px solid var(--border);">
   <div class="wrap">
     <h2>Chi c'è dietro</h2>
-    <div class="founder">
+    <div class="panel founder">
       <div class="founder-avatar">LD</div>
       <div>
         <h3>Luca Di Rienzo</h3>
@@ -450,6 +593,8 @@
     <a href="mailto:info@rootsystem.it" class="btn btn-primary">info@rootsystem.it</a>
   </div>
 </div>
+
+</main>
 
 <footer>
   <div class="wrap">
