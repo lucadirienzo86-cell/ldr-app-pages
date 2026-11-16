@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Consulenza & Audit AI — AgentiAI Italia</title>
+<meta name="description" content="Audit AI con il metodo 'diagnosi prima della cura': analizziamo i tuoi processi e indichiamo lo strumento giusto, senza doverlo costruire subito. Metodo appreso, non ancora applicato con un cliente pagante reale.">
+<style>
+  :root{
+    --green:#2e7d32;
+    --green-dark:#1b5e20;
+    --cream:#f5f5f0;
+    --ink:#1a1a1a;
+    --gray:#5a5a5a;
+    --border:#e2e2da;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.6;
+  }
+  .wrap{max-width:960px;margin:0 auto;padding:0 24px;}
+  header{
+    background:var(--ink);
+    color:#fff;
+    padding:14px 0;
+  }
+  header .wrap{display:flex;justify-content:space-between;align-items:center;}
+  .logo{font-weight:700;font-size:1.1rem;color:#fff;text-decoration:none;}
+  .logo span{color:#8bc34a;}
+  nav a{color:#ccc;text-decoration:none;margin-left:24px;font-size:0.92rem;}
+  nav a:hover{color:#fff;}
+
+  .hero{
+    padding:72px 0 56px;
+    text-align:center;
+    border-bottom:1px solid var(--border);
+  }
+  .badge{
+    display:inline-block;
+    background:#e8f5e9;
+    color:var(--green-dark);
+    padding:6px 14px;
+    border-radius:20px;
+    font-size:0.8rem;
+    font-weight:600;
+    letter-spacing:0.02em;
+    margin-bottom:20px;
+  }
+  .hero h1{
+    font-size:2.4rem;
+    line-height:1.15;
+    margin-bottom:18px;
+    letter-spacing:-0.01em;
+  }
+  .hero p.lead{
+    font-size:1.1rem;
+    color:var(--gray);
+    max-width:640px;
+    margin:0 auto 32px;
+  }
+  .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+  .btn{
+    display:inline-block;
+    padding:13px 26px;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:600;
+    font-size:0.95rem;
+    transition:opacity 0.15s;
+  }
+  .btn:hover{opacity:0.85;}
+  .btn-primary{background:var(--green);color:#fff;}
+  .btn-secondary{background:#fff;color:var(--ink);border:1px solid var(--border);}
+
+  .proof{
+    display:flex;
+    justify-content:center;
+    gap:40px;
+    flex-wrap:wrap;
+    padding:28px 0;
+    font-size:0.85rem;
+    color:var(--gray);
+    border-bottom:1px solid var(--border);
+  }
+  .proof strong{color:var(--ink);display:block;font-size:1.3rem;}
+
+  section{padding:56px 0;}
+  section h2{font-size:1.7rem;margin-bottom:12px;}
+  section .section-lead{color:var(--gray);max-width:600px;margin-bottom:36px;}
+
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:20px;
+  }
+  .card{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:26px;
+  }
+  .card h3{font-size:1.1rem;margin-bottom:10px;}
+  .card p{color:var(--gray);font-size:0.93rem;margin-bottom:12px;}
+  .status{
+    display:inline-block;
+    font-size:0.74rem;
+    font-weight:700;
+    padding:3px 10px;
+    border-radius:12px;
+    letter-spacing:0.02em;
+  }
+  .status-live{background:#e8f5e9;color:var(--green-dark);}
+  .status-pilot{background:#fff3e0;color:#e65100;}
+  .status-method{background:#e3f2fd;color:#0d47a1;}
+
+  .faq-item{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:20px 22px;
+    margin-bottom:12px;
+  }
+  .faq-item h4{font-size:0.98rem;margin-bottom:8px;}
+  .faq-item p{font-size:0.9rem;color:var(--gray);margin:0;}
+
+  .process{background:#fff;}
+  .steps{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:24px;
+    margin-top:28px;
+  }
+  .step-num{
+    width:32px;height:32px;
+    border-radius:50%;
+    background:var(--green);
+    color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-weight:700;
+    margin-bottom:12px;
+    font-size:0.9rem;
+  }
+  .step h4{font-size:1rem;margin-bottom:6px;}
+  .step p{font-size:0.88rem;color:var(--gray);}
+
+  .honest-box{
+    background:#fff8e1;
+    border:1px solid #ffe082;
+    border-radius:10px;
+    padding:20px 24px;
+    font-size:0.9rem;
+    color:#5d4a00;
+    margin-top:24px;
+  }
+  .honest-box strong{color:#3d3200;}
+
+  .cta-final{
+    background:var(--ink);
+    color:#fff;
+    text-align:center;
+    padding:60px 0;
+  }
+  .cta-final h2{color:#fff;margin-bottom:12px;}
+  .cta-final p{color:#bbb;margin-bottom:28px;max-width:500px;margin-left:auto;margin-right:auto;}
+
+  footer{
+    background:#fff;
+    border-top:1px solid var(--border);
+    padding:32px 0;
+    font-size:0.85rem;
+    color:var(--gray);
+  }
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+  footer a{color:var(--gray);text-decoration:underline;}
+
+  @media (max-width:640px){
+    .hero h1{font-size:1.8rem;}
+    .proof{gap:24px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a href="index.html" class="logo">Agenti<span>AI</span> Italia</a>
+    <nav>
+      <a href="index.html#servizi">Servizi</a>
+      <a href="#come-funziona">Come funziona</a>
+      <a href="#per-chi">Per chi</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contatti">Contatti</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="badge status-method" style="background:#e3f2fd;color:#0d47a1;">METODO APPRESO — NON ANCORA APPLICATO CON UN CLIENTE PAGANTE</span>
+    <h1>Diagnosi prima della cura: scopri dove automatizzare prima di spendere</h1>
+    <p class="lead">Un audit che analizza i tuoi processi aziendali e indica lo strumento AI giusto per ciascuno — senza doverlo costruire subito. Prima capisci, poi decidi se e cosa costruire.</p>
+    <div class="cta-row">
+      <a href="mailto:info@rootsystem.it" class="btn btn-primary">Richiedi il primo audit gratuito</a>
+      <a href="#come-funziona" class="btn btn-secondary">Guarda come funziona</a>
+    </div>
+  </div>
+</section>
+
+<div class="proof">
+  <div><strong>0</strong>clienti paganti su cui il metodo è già stato applicato</div>
+  <div><strong>1</strong>percorso di formazione verticale alla base del metodo (Percorso Consulente AI)</div>
+  <div><strong>100%</strong>trasparenza sullo stato, prima di accettare l'incarico</div>
+</div>
+
+<section>
+  <div class="wrap">
+    <h2>Cos'è, in chiaro</h2>
+    <div class="honest-box">
+      <strong>Lo diciamo esplicitamente, senza ambiguità:</strong> questo è un metodo studiato durante un percorso di formazione verticale (il "Percorso Consulente AI"), non un servizio che abbiamo già applicato con un cliente pagante reale. Non è una demo inventata né un framework teorico senza fondamento — è un approccio strutturato che abbiamo imparato e che siamo pronti a testare sul campo. Il primo audit che facciamo è, di fatto, il nostro primo test reale: lo offriamo gratuito proprio per questo.
+    </div>
+  </div>
+</section>
+
+<section class="process" id="come-funziona">
+  <div class="wrap">
+    <h2>Come funziona l'audit</h2>
+    <p class="section-lead">Niente proposta commerciale travestita da audit: prima la diagnosi, poi — solo se vuoi — la cura.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h4>Chiamata diagnostica</h4>
+        <p>Una call per capire come lavora oggi la tua azienda: dove si perde tempo, dove si perdono dati, cosa si fa ancora a mano che potrebbe non esserlo.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h4>Mappatura processi</h4>
+        <p>Ricostruiamo per iscritto i processi rilevanti (reparto per reparto, se serve) e identifichiamo dove uno strumento AI avrebbe un impatto reale, misurabile.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h4>Report scritto con priorità</h4>
+        <p>Un documento che indica quali interventi hanno più impatto e quali meno, ordinati per priorità — non una lista generica di "strumenti AI di tendenza".</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h4>Nessun obbligo di procedere</h4>
+        <p>Il report è tuo. Puoi implementarlo da solo, con un altro fornitore, o con noi. Nessuna clausola nascosta che ti lega a costruire qualcosa con noi dopo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="per-chi" style="background:#fff;border-top:1px solid var(--border);">
+  <div class="wrap">
+    <h2>Per chi è utile</h2>
+    <p class="section-lead">Non è pensato per chi ha già deciso cosa costruire e cerca solo un fornitore.</p>
+    <div class="grid">
+      <div class="card">
+        <span class="status status-method">TARGET PRINCIPALE</span>
+        <h3>PMI che vogliono capire prima di spendere</h3>
+        <p>Aziende che sospettano di poter automatizzare qualcosa (email, backoffice, gestione ordini, assistenza clienti) ma non sanno esattamente cosa, con cosa, e quanto costerebbe davvero farlo bene.</p>
+      </div>
+      <div class="card">
+        <span class="status status-method">ADATTO</span>
+        <h3>Chi ha già provato un tool AI "a caso"</h3>
+        <p>Chi ha testato ChatGPT o un altro strumento senza un piano e non ha visto risultati concreti — spesso il problema è la mancanza di un processo chiaro da automatizzare, non lo strumento.</p>
+      </div>
+      <div class="card">
+        <span class="status status-method">NON ADATTO (ANCORA)</span>
+        <h3>Chi vuole già un'implementazione pronta</h3>
+        <p>Se sai già esattamente cosa costruire e vuoi solo il preventivo di build, parti direttamente dalla pagina Automazione &amp; Agenti AI o E-commerce — l'audit è il passo prima, non un prerequisito obbligato.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <h2>Domande frequenti</h2>
+    <p class="section-lead">Le domande più dirette, con risposte altrettanto dirette.</p>
+    <div class="faq-item">
+      <h4>Quanto costa l'audit?</h4>
+      <p>Il primo audit è gratuito. È il nostro primo test reale del metodo, quindi non ha senso farlo pagare: lo offriamo come primo contatto per capire se il tuo progetto ha senso, senza alcun costo né impegno da parte tua.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Cosa NON è incluso nell'audit?</h4>
+      <p>L'audit non è un'implementazione. Non includiamo build di agenti AI, automazioni, integrazioni o sviluppo software: quello è un servizio separato, con uno scope e un preventivo scritti a parte, solo se e quando decidi di procedere.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Il metodo è già stato validato con un cliente pagante?</h4>
+      <p>No, e lo diciamo apertamente: è un metodo studiato durante un percorso di formazione verticale (Percorso Consulente AI), non ancora applicato da noi con un cliente pagante reale. Per questo il primo audit è gratuito — è il nostro modo di testarlo sul campo con trasparenza totale, non di vendertelo come "provato" quando non lo è ancora.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Quanto dura il processo di audit?</h4>
+      <p>Dipende dal numero di processi/reparti da mappare. Una chiamata diagnostica richiede in genere 45-60 minuti; il report scritto segue entro pochi giorni lavorativi. Tempi esatti comunicati prima di iniziare.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Se poi voglio implementare quanto indicato nel report, dovete farlo voi?</h4>
+      <p>No. Il report è tuo e puoi usarlo come vuoi — con un altro fornitore, con il tuo team interno, o con noi. Se scegli noi, parte un progetto separato con scope e preventivo scritti, come per ogni altro servizio che offriamo.</p>
+    </div>
+  </div>
+</section>
+
+<div class="cta-final" id="contatti">
+  <div class="wrap">
+    <h2>Vuoi capire dove automatizzare prima di spendere?</h2>
+    <p>Un audit gratuito, nessun obbligo di procedere. Ti diciamo anche se, secondo noi, non è ancora il momento giusto.</p>
+    <a href="mailto:info@rootsystem.it" class="btn btn-primary">info@rootsystem.it</a>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div>&copy; 2026 AgentiAI Italia — Luca Di Rienzo</div>
+    <div><a href="privacy.html">Informativa sulla privacy</a></div>
+  </div>
+</footer>
+
+</body>
+</html>

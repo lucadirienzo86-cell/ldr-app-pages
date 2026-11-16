@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>E-commerce Shopify — AgentiAI Italia</title>
+<meta name="description" content="Costruiamo e-commerce Shopify reali: frontend custom, integrazione Admin API, catalogo e ordini. Caso reale documentato, stato onesto incluso.">
+<style>
+  :root{
+    --green:#2e7d32;
+    --green-dark:#1b5e20;
+    --cream:#f5f5f0;
+    --ink:#1a1a1a;
+    --gray:#5a5a5a;
+    --border:#e2e2da;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.6;
+  }
+  .wrap{max-width:960px;margin:0 auto;padding:0 24px;}
+  header{
+    background:var(--ink);
+    color:#fff;
+    padding:14px 0;
+  }
+  header .wrap{display:flex;justify-content:space-between;align-items:center;}
+  .logo{font-weight:700;font-size:1.1rem;color:#fff;text-decoration:none;}
+  .logo span{color:#8bc34a;}
+  nav a{color:#ccc;text-decoration:none;margin-left:24px;font-size:0.92rem;}
+  nav a:hover{color:#fff;}
+
+  .hero{
+    padding:72px 0 56px;
+    text-align:center;
+    border-bottom:1px solid var(--border);
+  }
+  .badge{
+    display:inline-block;
+    background:#e8f5e9;
+    color:var(--green-dark);
+    padding:6px 14px;
+    border-radius:20px;
+    font-size:0.8rem;
+    font-weight:600;
+    letter-spacing:0.02em;
+    margin-bottom:20px;
+  }
+  .hero h1{
+    font-size:2.4rem;
+    line-height:1.15;
+    margin-bottom:18px;
+    letter-spacing:-0.01em;
+  }
+  .hero p.lead{
+    font-size:1.1rem;
+    color:var(--gray);
+    max-width:640px;
+    margin:0 auto 32px;
+  }
+  .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+  .btn{
+    display:inline-block;
+    padding:13px 26px;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:600;
+    font-size:0.95rem;
+    transition:opacity 0.15s;
+  }
+  .btn:hover{opacity:0.85;}
+  .btn-primary{background:var(--green);color:#fff;}
+  .btn-secondary{background:#fff;color:var(--ink);border:1px solid var(--border);}
+
+  .proof{
+    display:flex;
+    justify-content:center;
+    gap:40px;
+    flex-wrap:wrap;
+    padding:28px 0;
+    font-size:0.85rem;
+    color:var(--gray);
+    border-bottom:1px solid var(--border);
+  }
+  .proof strong{color:var(--ink);display:block;font-size:1.3rem;}
+
+  section{padding:56px 0;}
+  section h2{font-size:1.7rem;margin-bottom:12px;}
+  section .section-lead{color:var(--gray);max-width:600px;margin-bottom:36px;}
+
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:20px;
+  }
+  .card{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:26px;
+  }
+  .card h3{font-size:1.1rem;margin-bottom:10px;}
+  .card p{color:var(--gray);font-size:0.93rem;margin-bottom:12px;}
+  .status{
+    display:inline-block;
+    font-size:0.74rem;
+    font-weight:700;
+    padding:3px 10px;
+    border-radius:12px;
+    letter-spacing:0.02em;
+  }
+  .status-live{background:#e8f5e9;color:var(--green-dark);}
+  .status-pilot{background:#fff3e0;color:#e65100;}
+  .status-method{background:#e3f2fd;color:#0d47a1;}
+
+  .faq-item{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:20px 22px;
+    margin-bottom:12px;
+  }
+  .faq-item h4{font-size:0.98rem;margin-bottom:8px;}
+  .faq-item p{font-size:0.9rem;color:var(--gray);margin:0;}
+
+  .process{background:#fff;}
+  .steps{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:24px;
+    margin-top:28px;
+  }
+  .step-num{
+    width:32px;height:32px;
+    border-radius:50%;
+    background:var(--green);
+    color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-weight:700;
+    margin-bottom:12px;
+    font-size:0.9rem;
+  }
+  .step h4{font-size:1rem;margin-bottom:6px;}
+  .step p{font-size:0.88rem;color:var(--gray);}
+
+  .honest-box{
+    background:#fff8e1;
+    border:1px solid #ffe082;
+    border-radius:10px;
+    padding:20px 24px;
+    font-size:0.9rem;
+    color:#5d4a00;
+    margin-top:24px;
+  }
+  .honest-box strong{color:#3d3200;}
+
+  .case{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:28px;
+    margin-top:28px;
+  }
+  .case h3{margin-bottom:8px;}
+  .case .meta{font-size:0.85rem;color:var(--gray);margin-bottom:16px;}
+
+  .cta-final{
+    background:var(--ink);
+    color:#fff;
+    text-align:center;
+    padding:60px 0;
+  }
+  .cta-final h2{color:#fff;margin-bottom:12px;}
+  .cta-final p{color:#bbb;margin-bottom:28px;max-width:500px;margin-left:auto;margin-right:auto;}
+
+  footer{
+    background:#fff;
+    border-top:1px solid var(--border);
+    padding:32px 0;
+    font-size:0.85rem;
+    color:var(--gray);
+  }
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+  footer a{color:var(--gray);text-decoration:underline;}
+
+  @media (max-width:640px){
+    .hero h1{font-size:1.8rem;}
+    .proof{gap:24px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a href="index.html" class="logo">Agenti<span>AI</span> Italia</a>
+    <nav>
+      <a href="index.html#servizi">Servizi</a>
+      <a href="#caso-reale">Caso reale</a>
+      <a href="#come-lavoriamo">Come lavoriamo</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contatti">Contatti</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="badge status-pilot" style="background:#fff3e0;color:#e65100;">CASO PILOTA — SHOPIFY</span>
+    <h1>E-commerce su misura, costruito e verificabile</h1>
+    <p class="lead">Non vendiamo un template. Costruiamo negozi Shopify con frontend custom e integrazione reale all'Admin API — catalogo, ordini, pagamenti collegati a come lavora davvero la tua azienda.</p>
+    <div class="cta-row">
+      <a href="mailto:info@rootsystem.it" class="btn btn-primary">Parliamo del tuo progetto</a>
+      <a href="#caso-reale" class="btn btn-secondary">Guarda il caso reale</a>
+    </div>
+  </div>
+</section>
+
+<div class="proof">
+  <div><strong>1</strong>e-commerce Shopify reale costruito e live</div>
+  <div><strong>200</strong>risposta HTTP confermata, anche su deep-link</div>
+  <div><strong>0</strong>numeri di vendita inventati — non ancora misurati</div>
+</div>
+
+<section id="cosa-costruiamo">
+  <div class="wrap">
+    <h2>Cosa costruiamo</h2>
+    <p class="section-lead">Lavoriamo su Shopify come backend e-commerce, con un frontend custom costruito su misura — non un tema pronto riadattato.</p>
+    <div class="grid">
+      <div class="card">
+        <span class="status status-pilot">PROVATO SU UN CASO REALE</span>
+        <h3>Frontend custom</h3>
+        <p>Frontend React, non il tema Shopify di default: controllo totale su UX, performance e contenuti, con un CMS headless (Sanity) per gestire testi e pagine senza toccare il codice.</p>
+      </div>
+      <div class="card">
+        <span class="status status-pilot">PROVATO SU UN CASO REALE</span>
+        <h3>Integrazione Admin API</h3>
+        <p>Collegamento diretto alle API Admin di Shopify per gestione catalogo, ordini e dati — non un plugin di terze parti generico, ma un'integrazione scritta su misura per lo scope ordini del progetto.</p>
+      </div>
+      <div class="card">
+        <span class="status status-live">INCLUSO</span>
+        <h3>Catalogo e pagamenti</h3>
+        <p>Setup store Shopify, struttura catalogo prodotti, configurazione gateway di pagamento. La parte "core" di Shopify che funziona subito, fin dal day one.</p>
+      </div>
+      <div class="card">
+        <span class="status status-pilot">DIPENDE DAL PROGETTO</span>
+        <h3>Gestione ordini verso fornitori</h3>
+        <p>Trasmissione ordini a fornitori/logistica esterna (canale dati, codici prodotto EAN/GTIN, campi di testata ordine). È la parte che richiede un accordo commerciale con il fornitore, non solo codice: lo spieghiamo con il caso reale sotto.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="caso-reale" style="background:#fff;border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="wrap">
+    <h2>Il caso reale: Parafarmaci Online</h2>
+    <div class="case">
+      <span class="status status-pilot">E-COMMERCE PARAFARMACEUTICO — ITALIA</span>
+      <h3 style="margin-top:10px;">Negozio online di parafarmaci e integratori</h3>
+      <p class="meta">Shopify (backend) + frontend React + CMS Sanity · Obiettivo: uscire dalla guerra dei prezzi con contenuti di valore, non competere solo sul prezzo più basso</p>
+      <p>Il sito è costruito e online (hosting Vercel, risponde con codice 200 anche sui deep-link interni). Il frontend è React con contenuti gestiti via CMS Sanity, il backend è Shopify con integrazione all'Admin API (script dedicato per il token e lo scope ordini). Dal lato tecnico l'integrazione funziona.</p>
+    </div>
+    <div class="honest-box">
+      <strong>Lo stato onesto, senza giri di parole:</strong> il progetto è fermo da luglio/agosto 2026. Non per un limite tecnico nostro, ma perché manca ancora l'accordo commerciale con il fornitore logistico (Easyfarma): canale di trasmissione ordini, codici prodotto EAN/GTIN, campi di testata ordine da definire insieme a loro. In più restano da chiudere alcuni dettagli operativi del cliente: la partita IVA è ancora un placeholder nel codice (file <code>StaticPage.tsx</code>), e mancano le credenziali di Klaviyo, Google Tag Manager e Sanity da parte del cliente. Non abbiamo numeri di vendite o traffico da mostrare: il progetto non è mai andato live commercialmente, quindi non li abbiamo misurati — e non li inventiamo.
+    </div>
+  </div>
+</section>
+
+<section class="process" id="come-lavoriamo">
+  <div class="wrap">
+    <h2>Come lavoriamo</h2>
+    <p class="section-lead">Stesso principio degli altri servizi: scope scritto prima di iniziare, nessuna sorpresa durante il progetto.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h4>Scelta della piattaforma</h4>
+        <p>Valutiamo se Shopify è davvero la scelta giusta per il tuo catalogo e il tuo volume, prima di iniziare a costruire qualcosa.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h4>Build frontend + setup store</h4>
+        <p>Frontend custom, struttura catalogo, configurazione Shopify. Milestone verificabili, non "in corso" generico.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h4>Integrazione pagamenti e spedizioni</h4>
+        <p>Collegamento ai gateway di pagamento e, se serve, ai canali di trasmissione ordini verso corrieri o fornitori logistici esterni.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h4>Migrazione dati (se serve)</h4>
+        <p>Se arrivi da un altro store o gestionale, migriamo catalogo e storico ordini — scope definito per iscritto prima di iniziare.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <h4>Lancio</h4>
+        <p>Test completo prima della messa online: pagamenti, catalogo, ordini verificati, non solo "dichiarati pronti".</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <h2>Domande frequenti</h2>
+    <p class="section-lead">Le domande che ci fanno davvero i clienti che valutano un e-commerce.</p>
+    <div class="faq-item">
+      <h4>Lavorate solo su Shopify o anche su altre piattaforme (WooCommerce, ecc.)?</h4>
+      <p>Abbiamo esperienza reale e dimostrata solo su Shopify (frontend custom + integrazione Admin API). Non abbiamo ancora un caso reale costruito su WooCommerce o altre piattaforme: se il tuo progetto le richiede, te lo diciamo chiaramente prima di preventivare, invece di accettare e scoprirlo a metà lavoro.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Quanto tempo serve per costruire un e-commerce?</h4>
+      <p>Dipende da catalogo, integrazioni con fornitori e se serve migrazione dati da un sistema esistente. Un negozio con frontend custom e setup Shopify base richiede in genere alcune settimane; le integrazioni con fornitori logistici esterni (come nel nostro caso reale) dipendono anche da tempistiche che non controlliamo noi, perché richiedono un accordo con terze parti. Tempi esatti sempre scritti nel preventivo, non stimati a voce.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Serve avere la partita IVA già attiva per iniziare?</h4>
+      <p>Per costruire il sito e l'integrazione tecnica, no — possiamo procedere con lo sviluppo in parallelo. Ma per andare live commercialmente (vendere, emettere fatture, collegare i gateway di pagamento in produzione) sì, serve una partita IVA attiva: è uno dei blocchi reali che abbiamo documentato nel nostro caso pilota, dove è rimasta come placeholder nel codice finché non è stata risolta dal lato cliente.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Gestite anche le spedizioni?</h4>
+      <p>Gestiamo l'integrazione tecnica con il canale di trasmissione ordini verso il fornitore logistico o corriere che scegli (es. mappatura codici prodotto EAN/GTIN, campi di testata ordine). Non siamo noi il fornitore logistico: l'accordo commerciale con il corriere/magazzino lo chiude il cliente, noi colleghiamo i sistemi una volta che l'accordo esiste.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Garantite un certo numero di vendite o di traffico?</h4>
+      <p>No. Garantiamo un sito costruito, testato e pubblicato secondo lo scope scritto. Le vendite dipendono da marketing, prodotto e mercato — fattori che non controlliamo e su cui non facciamo promesse che non possiamo verificare.</p>
+    </div>
+  </div>
+</section>
+
+<div class="cta-final" id="contatti">
+  <div class="wrap">
+    <h2>Vuoi valutare un e-commerce per il tuo business?</h2>
+    <p>Scriviamo lo scope prima di iniziare: sai esattamente cosa costruiamo e cosa dipende da accordi con terze parti, prima di firmare.</p>
+    <a href="mailto:info@rootsystem.it" class="btn btn-primary">info@rootsystem.it</a>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div>&copy; 2026 AgentiAI Italia — Luca Di Rienzo</div>
+    <div><a href="privacy.html">Informativa sulla privacy</a></div>
+  </div>
+</footer>
+
+</body>
+</html>
