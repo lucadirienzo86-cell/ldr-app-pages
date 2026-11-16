@@ -1,160 +1,301 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="it" data-type="software">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="page-type" content="software">
+<meta name="site-kind" content="software">
 <title>Agenti AI & Automazione — AgentiAI Italia</title>
 <meta name="description" content="Costruiamo agenti AI per backoffice ed email, e agenti WhatsApp per risposta lead. Stato reale di ogni asset, nessuna demo venduta come prodotto finito.">
+<meta name="theme-color" content="#1a1a1a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
     --green:#2e7d32;
     --green-dark:#1b5e20;
+    --green-light:#e8f5e9;
     --cream:#f5f5f0;
     --ink:#1a1a1a;
     --gray:#5a5a5a;
     --border:#e2e2da;
+    --wa:#25D366;
+    --radius:12px;
+    --radius-sm:8px;
+    --edge:24px;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
   body{
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-family:"Plus Jakarta Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     color:var(--ink);
     background:var(--cream);
     line-height:1.6;
+    -webkit-font-smoothing:antialiased;
   }
-  .wrap{max-width:960px;margin:0 auto;padding:0 24px;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 var(--edge);}
+  a{color:inherit;}
+  img,svg{display:block;max-width:100%;}
+
+  .skip-link{
+    position:absolute;left:-9999px;top:0;
+    background:var(--green);color:#fff;padding:10px 18px;z-index:200;border-radius:0 0 8px 0;
+    font-weight:600;font-size:0.9rem;
+  }
+  .skip-link:focus{left:0;}
+
+  /* ---------- header ---------- */
   header{
     background:var(--ink);
     color:#fff;
-    padding:14px 0;
+    padding:16px 0;
+    position:sticky;top:0;z-index:100;
   }
   header .wrap{display:flex;justify-content:space-between;align-items:center;}
-  .logo{font-weight:700;font-size:1.1rem;color:#fff;text-decoration:none;}
+  .logo{font-weight:700;font-size:1.1rem;color:#fff;text-decoration:none;letter-spacing:-0.01em;}
   .logo span{color:#8bc34a;}
-  nav a{color:#ccc;text-decoration:none;margin-left:24px;font-size:0.92rem;}
-  nav a:hover{color:#fff;}
-
-  .hero{
-    padding:72px 0 56px;
-    text-align:center;
-    border-bottom:1px solid var(--border);
+  nav{display:flex;align-items:center;}
+  nav a{
+    position:relative;
+    color:#cfcfc9;text-decoration:none;margin-left:26px;font-size:0.92rem;font-weight:500;
+    padding:4px 0;
+    transition:color 0.2s ease;
   }
+  nav a::after{
+    content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:#8bc34a;
+    transform:scaleX(0);transform-origin:left;transition:transform 0.25s ease;
+  }
+  nav a:hover{color:#fff;}
+  nav a:hover::after{transform:scaleX(1);}
+  nav a:focus-visible,.btn:focus-visible,.card:focus-visible{outline:2px solid #8bc34a;outline-offset:3px;}
+
+  /* ---------- buttons ---------- */
+  .btn{
+    display:inline-block;
+    padding:13px 26px;
+    border-radius:var(--radius-sm);
+    text-decoration:none;
+    font-weight:600;
+    font-size:0.95rem;
+    transition:transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, opacity 0.15s ease;
+    will-change:transform;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn:active{transform:translateY(0) scale(0.98);}
+  .btn-primary{background:var(--green);color:#fff;box-shadow:0 1px 0 rgba(0,0,0,0.08);}
+  .btn-primary:hover{background:var(--green-dark);box-shadow:0 8px 18px -8px rgba(27,94,32,0.55);}
+  .btn-secondary{background:#fff;color:var(--ink);border:1px solid var(--border);}
+  .btn-secondary:hover{border-color:var(--ink);box-shadow:0 6px 16px -10px rgba(0,0,0,0.25);}
+
+  /* ---------- hero ---------- */
+  .hero{
+    background:var(--ink);
+    color:#fff;
+    padding:88px 0 72px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero .flow-ghost{
+    position:absolute;inset:0;
+    opacity:0.08;
+    pointer-events:none;
+  }
+  .hero .wrap{position:relative;z-index:1;}
   .badge{
     display:inline-block;
-    background:#e8f5e9;
-    color:var(--green-dark);
+    background:rgba(139,195,74,0.16);
+    color:#aee17a;
     padding:6px 14px;
     border-radius:20px;
     font-size:0.8rem;
     font-weight:600;
-    letter-spacing:0.02em;
-    margin-bottom:20px;
+    letter-spacing:0.04em;
+    margin-bottom:24px;
   }
   .hero h1{
-    font-size:2.4rem;
+    font-size:2.6rem;
+    font-weight:800;
     line-height:1.15;
-    margin-bottom:18px;
-    letter-spacing:-0.01em;
+    margin-bottom:20px;
+    letter-spacing:-0.015em;
+    max-width:760px;
+    margin-left:auto;margin-right:auto;
   }
   .hero p.lead{
-    font-size:1.1rem;
-    color:var(--gray);
+    font-size:1.12rem;
+    color:#c7c7c2;
     max-width:640px;
-    margin:0 auto 32px;
+    margin:0 auto 36px;
   }
   .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
-  .btn{
-    display:inline-block;
-    padding:13px 26px;
-    border-radius:8px;
-    text-decoration:none;
-    font-weight:600;
-    font-size:0.95rem;
-    transition:opacity 0.15s;
-  }
-  .btn:hover{opacity:0.85;}
-  .btn-primary{background:var(--green);color:#fff;}
-  .btn-secondary{background:#fff;color:var(--ink);border:1px solid var(--border);}
 
-  section{padding:56px 0;}
-  section h2{font-size:1.7rem;margin-bottom:12px;}
-  section .section-lead{color:var(--gray);max-width:600px;margin-bottom:36px;}
+  [data-enter] .badge,
+  [data-enter] h1,
+  [data-enter] p.lead,
+  [data-enter] .cta-row{
+    opacity:0;
+    animation:enter-up 0.7s cubic-bezier(.21,.8,.32,1) forwards;
+  }
+  [data-enter] .badge{animation-delay:0.05s;}
+  [data-enter] h1{animation-delay:0.15s;}
+  [data-enter] p.lead{animation-delay:0.28s;}
+  [data-enter] .cta-row{animation-delay:0.4s;}
+  @keyframes enter-up{
+    from{opacity:0;transform:translateY(16px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+  @media (prefers-reduced-motion:reduce){
+    [data-enter] .badge,[data-enter] h1,[data-enter] p.lead,[data-enter] .cta-row{animation:none;opacity:1;transform:none;}
+  }
+
+  /* ---------- sections ---------- */
+  section{padding:72px 0;}
+  section h2{font-size:1.8rem;font-weight:800;margin-bottom:12px;letter-spacing:-0.01em;}
+  section .section-lead{color:var(--gray);max-width:620px;margin-bottom:40px;font-size:1.02rem;}
 
   .grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:20px;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:22px;
   }
   .card{
     background:#fff;
     border:1px solid var(--border);
-    border-radius:12px;
-    padding:26px;
+    border-radius:var(--radius);
+    padding:28px;
+    transition:transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
   }
-  .card h3{font-size:1.1rem;margin-bottom:10px;}
-  .card p{color:var(--gray);font-size:0.93rem;margin-bottom:12px;}
+  .card:hover{
+    transform:translateY(-2px);
+    box-shadow:0 14px 28px -18px rgba(0,0,0,0.25);
+    border-color:#cfcfc3;
+  }
+  .card h3{font-size:1.14rem;font-weight:700;margin:14px 0 10px;}
+  .card p{color:var(--gray);font-size:0.95rem;margin-bottom:14px;}
   .card a.card-link{font-size:0.88rem;font-weight:600;color:var(--green-dark);text-decoration:none;}
   .card a.card-link:hover{text-decoration:underline;}
+
   .status{
     display:inline-block;
     font-size:0.74rem;
     font-weight:700;
     padding:3px 10px;
     border-radius:12px;
-    letter-spacing:0.02em;
+    letter-spacing:0.03em;
   }
-  .status-live{background:#e8f5e9;color:var(--green-dark);}
-  .status-pilot{background:#fff3e0;color:#e65100;}
-  .status-method{background:#e3f2fd;color:#0d47a1;}
+  .status-live{background:var(--green-light);color:var(--green-dark);}
+  .status-pilot{background:#fdeedd;color:#8a4a06;}
+  .status-method{background:#e3edf7;color:#1b4a7a;}
 
-  .faq-item{
-    background:#fff;
-    border:1px solid var(--border);
-    border-radius:10px;
-    padding:20px 22px;
-    margin-bottom:12px;
+  /* ---------- icons & diagrams ---------- */
+  .icon-wa{
+    width:30px;height:30px;
+    background:var(--wa);
+    border-radius:8px;
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:4px;
   }
-  .faq-item h4{font-size:0.98rem;margin-bottom:8px;}
-  .faq-item p{font-size:0.9rem;color:var(--gray);margin:0;}
+  .icon-wa svg{width:16px;height:16px;fill:#fff;}
+
+  .pictogram{width:30px;height:30px;color:var(--green-dark);margin-bottom:4px;}
+  .pictogram svg{width:100%;height:100%;}
+
+  .flow{
+    display:flex;align-items:flex-start;justify-content:space-between;gap:0;
+    margin-top:18px;padding-top:18px;border-top:1px solid var(--border);
+  }
+  .flow-node{
+    display:flex;flex-direction:column;align-items:center;gap:5px;
+    width:52px;text-align:center;flex:0 0 auto;
+  }
+  .flow-node .dot{
+    width:28px;height:28px;border-radius:50%;
+    background:var(--green-light);color:var(--green-dark);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .flow-node.wa .dot{background:var(--wa);}
+  .flow-node .dot svg{width:14px;height:14px;}
+  .flow-node .dot svg.fill{fill:#fff;}
+  .flow-node .dot svg.stroke{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+  .flow-node span{font-size:0.62rem;color:var(--gray);font-weight:600;letter-spacing:0.01em;line-height:1.25;}
+  .flow-line{
+    flex:1 1 auto;min-width:10px;height:2px;background:var(--border);position:relative;margin:0 2px;
+    align-self:center;margin-top:13px;
+    overflow:hidden;
+  }
+  .flow-line::after{
+    content:"";position:absolute;top:0;left:-100%;width:60%;height:100%;
+    background:var(--green);
+    animation:pulse-run 3s linear infinite;
+  }
+  @media (prefers-reduced-motion:reduce){
+    .flow-line::after{animation:none;left:0;width:100%;opacity:0.4;}
+  }
+  @keyframes pulse-run{
+    from{left:-60%;}
+    to{left:100%;}
+  }
 
   .process{background:#fff;}
   .steps{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-    gap:24px;
-    margin-top:28px;
+    gap:26px;
+    margin-top:30px;
   }
+  .step{transition:transform 0.2s ease;}
+  .step:hover{transform:translateY(-2px);}
   .step-num{
-    width:32px;height:32px;
+    width:34px;height:34px;
     border-radius:50%;
     background:var(--green);
     color:#fff;
     display:flex;align-items:center;justify-content:center;
     font-weight:700;
-    margin-bottom:12px;
+    margin-bottom:14px;
     font-size:0.9rem;
   }
-  .step h4{font-size:1rem;margin-bottom:6px;}
-  .step p{font-size:0.88rem;color:var(--gray);}
+  .step h4{font-size:1.02rem;font-weight:700;margin-bottom:6px;}
+  .step p{font-size:0.9rem;color:var(--gray);}
 
   .honest-box{
-    background:#fff8e1;
-    border:1px solid #ffe082;
-    border-radius:10px;
-    padding:20px 24px;
-    font-size:0.9rem;
-    color:#5d4a00;
-    margin-top:24px;
+    background:#fafaf7;
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:24px 26px;
+    font-size:0.93rem;
+    color:var(--gray);
+    margin-top:28px;
   }
-  .honest-box strong{color:#3d3200;}
+  .honest-box .honest-label{
+    display:block;
+    font-size:0.75rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;
+    color:var(--ink);margin-bottom:10px;
+  }
+  .honest-box strong{color:var(--ink);}
+
+  .faq-item{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:22px 24px;
+    margin-bottom:12px;
+    transition:border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .faq-item:hover{border-color:#cfcfc3;box-shadow:0 10px 22px -16px rgba(0,0,0,0.2);}
+  .faq-item h4{font-size:1rem;font-weight:700;margin-bottom:8px;}
+  .faq-item p{font-size:0.92rem;color:var(--gray);margin:0;}
 
   .cta-final{
     background:var(--ink);
     color:#fff;
     text-align:center;
-    padding:60px 0;
+    padding:72px 0;
   }
-  .cta-final h2{color:#fff;margin-bottom:12px;}
-  .cta-final p{color:#bbb;margin-bottom:28px;max-width:500px;margin-left:auto;margin-right:auto;}
+  .cta-final h2{color:#fff;margin-bottom:12px;font-size:1.8rem;font-weight:800;}
+  .cta-final p{color:#bbb;margin-bottom:28px;max-width:520px;margin-left:auto;margin-right:auto;}
 
   footer{
     background:#fff;
@@ -166,27 +307,47 @@
   footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
   footer a{color:var(--gray);text-decoration:underline;}
 
+  .menu-toggle{
+    display:none;
+    background:none;border:0;color:#fff;cursor:pointer;
+    width:40px;height:40px;align-items:center;justify-content:center;
+    border-radius:8px;
+  }
+  .menu-toggle:hover{background:rgba(255,255,255,0.08);}
+  .menu-toggle svg{width:22px;height:22px;}
+
   @media (max-width:640px){
-    .hero h1{font-size:1.8rem;}
+    .hero{padding:64px 0 52px;}
+    .hero h1{font-size:1.9rem;}
+    section{padding:52px 0;}
+    .menu-toggle{display:inline-flex;}
+    nav{position:fixed;inset:0;top:60px;background:var(--ink);flex-direction:column;align-items:flex-start;padding:20px var(--edge);display:none;}
+    nav.open{display:flex;}
+    nav a{margin-left:0;margin-bottom:18px;font-size:1.05rem;}
   }
 </style>
 </head>
 <body>
+<a href="#main" class="skip-link">Vai al contenuto</a>
 
 <header>
   <div class="wrap">
     <a href="index.html" class="logo">Agenti<span>AI</span> Italia</a>
-    <nav>
+    <nav id="site-nav">
       <a href="index.html#servizi">Servizi</a>
       <a href="#cosa-costruiamo">Agenti AI</a>
       <a href="#come-lavoriamo">Come lavoriamo</a>
       <a href="#faq">FAQ</a>
       <a href="#contatti">Contatti</a>
     </nav>
+    <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Apri il menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
   </div>
 </header>
 
-<section class="hero">
+<main id="main">
+<section class="hero" data-enter>
   <div class="wrap">
     <span class="badge">AGENTI AI &amp; AUTOMAZIONE</span>
     <h1>Agenti AI che fanno un lavoro vero, non una demo</h1>
@@ -205,23 +366,77 @@
     <div class="grid">
       <div class="card">
         <span class="status status-live">NOSTRO CORE — PROVATO OGNI GIORNO</span>
+        <div class="pictogram" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="5" width="18" height="14" rx="2"/>
+            <path d="M3 7l9 6 9-6"/>
+          </svg>
+        </div>
         <h3>Agente email &amp; calendario (backoffice)</h3>
         <p>Legge email, le smista, propone o esegue azioni su calendario, automatizza processi ripetitivi di ufficio. È l'agente che usiamo noi stessi ogni giorno sul nostro backoffice assicurativo, prima di proporlo a chiunque altro. Non è una demo: è il lavoro quotidiano.</p>
+        <div class="flow" role="img" aria-label="Flusso: email e calendario, agente, azione">
+          <div class="flow-node">
+            <div class="dot"><svg class="stroke" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div>
+            <span>Email &amp; calendario</span>
+          </div>
+          <div class="flow-line"></div>
+          <div class="flow-node">
+            <div class="dot"><svg class="stroke" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 00.34 1.87l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.7 1.7 0 00-1.87-.34 1.7 1.7 0 00-1 1.55V21a2 2 0 11-4 0v-.09a1.7 1.7 0 00-1-1.55 1.7 1.7 0 00-1.87.34l-.06.06a2 2 0 11-2.83-2.83l.06-.06A1.7 1.7 0 004.6 15a1.7 1.7 0 00-1.55-1H3a2 2 0 110-4h.09A1.7 1.7 0 004.6 9a1.7 1.7 0 00-.34-1.87l-.06-.06a2 2 0 112.83-2.83l.06.06A1.7 1.7 0 009 4.6a1.7 1.7 0 001-1.55V3a2 2 0 114 0v.09a1.7 1.7 0 001 1.55 1.7 1.7 0 001.87-.34l.06-.06a2 2 0 112.83 2.83l-.06.06A1.7 1.7 0 0019.4 9c.1.35.57.6 1.55.6H21a2 2 0 110 4h-.09a1.7 1.7 0 00-1.51.9z"/></svg></div>
+            <span>Agente</span>
+          </div>
+          <div class="flow-line"></div>
+          <div class="flow-node">
+            <div class="dot"><svg class="stroke" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+            <span>Azione</span>
+          </div>
+        </div>
       </div>
+
       <div class="card">
         <span class="status status-method">PROTOTIPO REALE — IN RODAGGIO</span>
+        <div class="icon-wa" aria-hidden="true">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        </div>
         <h3>Agente WhatsApp risposta lead — Diana/Synapsy</h3>
         <p>Sistema (n8n + OpenWA) che risponde automaticamente ai lead su WhatsApp. Il campo di configurazione è generico ("Verticale: generico"), quindi lo stesso motore è adattabile a contesti diversi — incluso l'intake/prenotazioni di uno studio medico. <strong>Stato onesto:</strong> OpenWA è giù da 6 giorni e in questo momento non risponde a nessuno; zero lead reali processati fino ad oggi; negli ultimi 10 giorni abbiamo trovato e corretto 10 bug gravi, incluso uno che saltava un vincolo normativo RUI. È un prototipo reale che stiamo rodando, non un prodotto in produzione provata.</p>
+        <div class="flow" role="img" aria-label="Flusso: lead WhatsApp, Diana, qualifica, umano">
+          <div class="flow-node wa">
+            <div class="dot"><svg class="fill" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></div>
+            <span>Lead WhatsApp</span>
+          </div>
+          <div class="flow-line"></div>
+          <div class="flow-node">
+            <div class="dot"><svg class="stroke" viewBox="0 0 24 24"><path d="M12 3l1.9 4.5L18 9l-4.1 1.5L12 15l-1.9-4.5L6 9l4.1-1.5L12 3z"/><path d="M19 15l.8 1.9L21.5 18l-1.7.8L19 20.5l-.8-1.7-1.7-.8 1.7-.8z"/></svg></div>
+            <span>Diana</span>
+          </div>
+          <div class="flow-line"></div>
+          <div class="flow-node">
+            <div class="dot"><svg class="stroke" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
+            <span>Qualifica</span>
+          </div>
+          <div class="flow-line"></div>
+          <div class="flow-node">
+            <div class="dot"><svg class="stroke" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 016-6h4a6 6 0 016 6v1"/></svg></div>
+            <span>Umano</span>
+          </div>
+        </div>
       </div>
+
       <div class="card">
         <span class="status status-pilot">APPLICABILE, NON ANCORA TESTATO LÌ</span>
+        <div class="pictogram" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0016.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 002 8.5c0 2.29 1.51 4.04 3 5.5l7 7z"/>
+          </svg>
+        </div>
         <h3>Adattamento verticale: studi medici / intake pazienti</h3>
         <p>Il motore Diana/Synapsy è pensato per essere riconfigurato per verticale: per uno studio medico significherebbe intake iniziale e gestione prenotazioni via WhatsApp. Non abbiamo ancora un caso reale con un cliente paziente di uno studio medico — lo segnaliamo come possibilità tecnica concreta, non come caso già fatto.</p>
       </div>
     </div>
 
     <div class="honest-box">
-      <strong>Perché lo scriviamo così esplicito:</strong> l'agente email/calendario lo usiamo ogni giorno e sappiamo cosa può fare. L'agente WhatsApp è un prototipo reale, attualmente fermo per un problema tecnico (OpenWA down) e senza ancora un lead reale gestito. Se il tuo progetto ha bisogno esattamente di quest'ultimo, te lo diciamo prima di accettare l'incarico, e decidiamo insieme se procedere come test trasparente o aspettare che sia più stabile.
+      <span class="honest-label">Perché lo scriviamo così esplicito</span>
+      <p>L'agente email/calendario lo usiamo ogni giorno e sappiamo cosa può fare. L'agente WhatsApp è un prototipo reale, attualmente fermo per un problema tecnico (OpenWA down) e senza ancora un lead reale gestito. Se il tuo progetto ha bisogno esattamente di quest'ultimo, te lo diciamo prima di accettare l'incarico, e decidiamo insieme se procedere come test trasparente o aspettare che sia più stabile.</p>
     </div>
   </div>
 </section>
@@ -290,6 +505,7 @@
     </div>
   </div>
 </section>
+</main>
 
 <div class="cta-final" id="contatti">
   <div class="wrap">
@@ -304,7 +520,24 @@
     <div>&copy; 2026 AgentiAI Italia — Luca Di Rienzo</div>
     <div><a href="index.html">Home</a> · <a href="privacy.html">Informativa sulla privacy</a></div>
   </div>
+  <div class="wrap" style="margin-top:8px;font-size:0.72rem;color:#9a9a92;">Icona WhatsApp: logo ufficiale WhatsApp Inc.</div>
 </footer>
 
+<script>
+  var toggle = document.getElementById('menu-toggle');
+  var nav = document.getElementById('site-nav');
+  if (toggle && nav) {
+    toggle.addEventListener('click', function(){
+      var open = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    nav.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){
+        nav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+</script>
 </body>
 </html>
