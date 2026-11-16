@@ -2,12 +2,304 @@
 <html lang="it">
 <head>
 <meta charset="UTF-8">
-<title>AgentiAI Italia - Automazione</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AgentiAI Italia — Automazione e Agenti AI per il tuo business</title>
+<meta name="description" content="Agenzia italiana AI-native: automazione, agenti AI, sviluppo web ed e-commerce. Scope scritto, preventivo prima di iniziare, consegna a milestone fisse.">
+<style>
+  :root{
+    --green:#2e7d32;
+    --green-dark:#1b5e20;
+    --cream:#f5f5f0;
+    --ink:#1a1a1a;
+    --gray:#5a5a5a;
+    --border:#e2e2da;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.6;
+  }
+  .wrap{max-width:960px;margin:0 auto;padding:0 24px;}
+  header{
+    background:var(--ink);
+    color:#fff;
+    padding:14px 0;
+  }
+  header .wrap{display:flex;justify-content:space-between;align-items:center;}
+  .logo{font-weight:700;font-size:1.1rem;color:#fff;text-decoration:none;}
+  .logo span{color:#8bc34a;}
+  nav a{color:#ccc;text-decoration:none;margin-left:24px;font-size:0.92rem;}
+  nav a:hover{color:#fff;}
+
+  .hero{
+    padding:72px 0 56px;
+    text-align:center;
+    border-bottom:1px solid var(--border);
+  }
+  .badge{
+    display:inline-block;
+    background:#e8f5e9;
+    color:var(--green-dark);
+    padding:6px 14px;
+    border-radius:20px;
+    font-size:0.8rem;
+    font-weight:600;
+    letter-spacing:0.02em;
+    margin-bottom:20px;
+  }
+  .hero h1{
+    font-size:2.4rem;
+    line-height:1.15;
+    margin-bottom:18px;
+    letter-spacing:-0.01em;
+  }
+  .hero p.lead{
+    font-size:1.1rem;
+    color:var(--gray);
+    max-width:640px;
+    margin:0 auto 32px;
+  }
+  .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+  .btn{
+    display:inline-block;
+    padding:13px 26px;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:600;
+    font-size:0.95rem;
+    transition:opacity 0.15s;
+  }
+  .btn:hover{opacity:0.85;}
+  .btn-primary{background:var(--green);color:#fff;}
+  .btn-secondary{background:#fff;color:var(--ink);border:1px solid var(--border);}
+
+  .proof{
+    display:flex;
+    justify-content:center;
+    gap:40px;
+    flex-wrap:wrap;
+    padding:28px 0;
+    font-size:0.85rem;
+    color:var(--gray);
+    border-bottom:1px solid var(--border);
+  }
+  .proof strong{color:var(--ink);display:block;font-size:1.3rem;}
+
+  section{padding:56px 0;}
+  section h2{font-size:1.7rem;margin-bottom:12px;}
+  section .section-lead{color:var(--gray);max-width:600px;margin-bottom:36px;}
+
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:20px;
+  }
+  .card{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:26px;
+  }
+  .card h3{font-size:1.1rem;margin-bottom:10px;}
+  .card p{color:var(--gray);font-size:0.93rem;margin-bottom:12px;}
+  .status{
+    display:inline-block;
+    font-size:0.74rem;
+    font-weight:700;
+    padding:3px 10px;
+    border-radius:12px;
+    letter-spacing:0.02em;
+  }
+  .status-live{background:#e8f5e9;color:var(--green-dark);}
+  .status-pilot{background:#fff3e0;color:#e65100;}
+
+  .process{background:#fff;}
+  .steps{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:24px;
+    margin-top:28px;
+  }
+  .step-num{
+    width:32px;height:32px;
+    border-radius:50%;
+    background:var(--green);
+    color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-weight:700;
+    margin-bottom:12px;
+    font-size:0.9rem;
+  }
+  .step h4{font-size:1rem;margin-bottom:6px;}
+  .step p{font-size:0.88rem;color:var(--gray);}
+
+  .honest-box{
+    background:#fff8e1;
+    border:1px solid #ffe082;
+    border-radius:10px;
+    padding:20px 24px;
+    font-size:0.9rem;
+    color:#5d4a00;
+    margin-top:24px;
+  }
+  .honest-box strong{color:#3d3200;}
+
+  .case{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:28px;
+    margin-top:28px;
+  }
+  .case h3{margin-bottom:8px;}
+  .case .meta{font-size:0.85rem;color:var(--gray);margin-bottom:16px;}
+
+  .cta-final{
+    background:var(--ink);
+    color:#fff;
+    text-align:center;
+    padding:60px 0;
+  }
+  .cta-final h2{color:#fff;margin-bottom:12px;}
+  .cta-final p{color:#bbb;margin-bottom:28px;max-width:500px;margin-left:auto;margin-right:auto;}
+
+  footer{
+    background:#fff;
+    border-top:1px solid var(--border);
+    padding:32px 0;
+    font-size:0.85rem;
+    color:var(--gray);
+  }
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+  footer a{color:var(--gray);text-decoration:underline;}
+
+  @media (max-width:640px){
+    .hero h1{font-size:1.8rem;}
+    .proof{gap:24px;}
+  }
+</style>
 </head>
-<body style="font-family: sans-serif; max-width: 700px; margin: 60px auto; line-height: 1.6;">
-<h1>AgentiAI Italia</h1>
-<p>Piattaforma di automazione per la gestione email e produttivita' tramite intelligenza artificiale.</p>
-<p>Contatto: <a href="mailto:info@rootsystem.it">info@rootsystem.it</a></p>
-<p><a href="privacy.html">Informativa sulla privacy</a></p>
+<body>
+
+<header>
+  <div class="wrap">
+    <a href="index.html" class="logo">Agenti<span>AI</span> Italia</a>
+    <nav>
+      <a href="#servizi">Servizi</a>
+      <a href="#processo">Come lavoriamo</a>
+      <a href="#contatti">Contatti</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="badge">AGENZIA AI-NATIVE ITALIANA</span>
+    <h1>Automazione e agenti AI che lavorano davvero per il tuo business</h1>
+    <p class="lead">Costruiamo agenti AI, siti web e integrazioni e-commerce. Scope scritto prima di iniziare, preventivo chiaro, consegna a milestone fisse — nessuna sorpresa in fattura.</p>
+    <div class="cta-row">
+      <a href="#contatti" class="btn btn-primary">Richiedi un audit gratuito</a>
+      <a href="#servizi" class="btn btn-secondary">Guarda i servizi</a>
+    </div>
+  </div>
+</section>
+
+<div class="proof">
+  <div><strong>3+</strong>siti pubblicati e live</div>
+  <div><strong>1</strong>e-commerce Shopify reale costruito</div>
+  <div><strong>100%</strong>lavoro scritto, nessun "si vedrà"</div>
+</div>
+
+<section id="servizi">
+  <div class="wrap">
+    <h2>Cosa facciamo</h2>
+    <p class="section-lead">Non vendiamo servizi che non abbiamo mai testato. Ogni voce qui sotto è segnata con lo stato reale.</p>
+    <div class="grid">
+      <div class="card">
+        <span class="status status-live">NOSTRO CORE</span>
+        <h3>Automazione &amp; Agenti AI</h3>
+        <p>Agenti AI che leggono email, gestiscono calendari, automatizzano processi ripetitivi di ufficio e backoffice. È il lavoro che facciamo ogni giorno, non una demo.</p>
+      </div>
+      <div class="card">
+        <span class="status status-live">PROVATO</span>
+        <h3>Sviluppo Web</h3>
+        <p>Siti e landing page costruiti e pubblicati, dal primo commit al deploy live. Niente template generico: scope definito, consegna verificata.</p>
+      </div>
+      <div class="card">
+        <span class="status status-pilot">CASO PILOTA</span>
+        <h3>E-commerce (Shopify)</h3>
+        <p>Abbiamo costruito un e-commerce Shopify reale (frontend + integrazione Admin API) per un cliente del settore parafarmaceutico. Live e funzionante — in fase di completamento dell'integrazione ordini con il fornitore.</p>
+      </div>
+      <div class="card">
+        <span class="status status-pilot">IN VALIDAZIONE</span>
+        <h3>SEO &amp; Visibilità AI (GEO/AEO)</h3>
+        <p>Stiamo testando strumenti di audit SEO e ottimizzazione per i motori di risposta AI (ChatGPT, Perplexity). Non la vendiamo ancora come servizio finito: prima la validiamo su casi reali.</p>
+      </div>
+    </div>
+
+    <div class="honest-box">
+      <strong>Perché lo scriviamo così esplicito:</strong> preferiamo dirti dove siamo solidi e dove stiamo ancora imparando, piuttosto che vendere una lista di servizi uguale per tutti. Se il tuo progetto richiede qualcosa che segnamo "in validazione", te lo diciamo chiaro prima di accettare l'incarico.
+    </div>
+  </div>
+</section>
+
+<section id="case-study" style="background:#fff;border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="wrap">
+    <h2>Un caso reale</h2>
+    <div class="case">
+      <span class="status status-pilot">E-COMMERCE PARAFARMACEUTICO</span>
+      <h3 style="margin-top:10px;">Negozio online di parafarmaci e integratori</h3>
+      <p class="meta">Shopify (backend) + frontend React · Obiettivo: uscire dalla guerra dei prezzi con contenuti di valore</p>
+      <p>Sito costruito e pubblicato, con integrazione all'Admin API di Shopify per gestione prodotti e ordini. Il progetto è in corso: l'integrazione tecnica funziona, l'ultimo tratto dipende da un accordo commerciale con il fornitore logistico, non da un limite nostro.</p>
+    </div>
+  </div>
+</section>
+
+<section class="process" id="processo">
+  <div class="wrap">
+    <h2>Come lavoriamo</h2>
+    <p class="section-lead">Scope scritto prima di iniziare, preventivo fisso, nessuna ora fatturata a sorpresa.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h4>Scoping scritto</h4>
+        <p>Definiamo per iscritto cosa costruiamo, prima di iniziare qualsiasi lavoro.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h4>Preventivo chiaro</h4>
+        <p>Prezzo fisso a milestone, non a ore. Sai cosa paghi prima di iniziare.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h4>Consegna verificata</h4>
+        <p>Ogni milestone viene testata e mostrata live, non solo "dichiarata pronta".</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h4>Nessun layer account-manager</h4>
+        <p>Parli direttamente con chi costruisce, non con chi passa messaggi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-final" id="contatti">
+  <div class="wrap">
+    <h2>Parliamo del tuo progetto</h2>
+    <p>Un audit gratuito per capire cosa ha senso automatizzare prima di tutto — nessun impegno.</p>
+    <a href="mailto:info@rootsystem.it" class="btn btn-primary">info@rootsystem.it</a>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div>&copy; 2026 AgentiAI Italia — Luca Di Rienzo</div>
+    <div><a href="privacy.html">Informativa sulla privacy</a></div>
+  </div>
+</footer>
+
 </body>
 </html>
