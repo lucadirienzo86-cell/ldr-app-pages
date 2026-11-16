@@ -56,6 +56,19 @@
   }
   nav a:hover{color:#fff;}
   nav a:hover::after{width:100%;}
+  .nav-dropdown{position:relative;display:inline-flex;align-items:center;margin-left:26px;}
+  .nav-dropdown > a{margin-left:0;display:flex;align-items:center;gap:4px;cursor:pointer;}
+  .nav-dropdown > a svg{width:9px;height:9px;transition:transform .2s ease;}
+  .nav-dropdown:hover > a svg{transform:rotate(180deg);}
+  .nav-dropdown-menu{position:absolute;top:100%;left:0;margin-top:14px;background:#fff;border-radius:10px;border:1px solid var(--border);box-shadow:0 18px 36px -14px rgba(0,0,0,.28);min-width:230px;padding:8px;opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity .18s ease,transform .18s ease,visibility .18s;z-index:60;}
+  .nav-dropdown:hover .nav-dropdown-menu,.nav-dropdown-menu:hover{opacity:1;visibility:visible;transform:translateY(0);}
+  .nav-dropdown-menu a{display:block;color:var(--ink)!important;margin:0!important;padding:10px 12px;border-radius:6px;font-size:.87rem;font-weight:500;}
+  .nav-dropdown-menu a:hover{background:var(--green-light,#e8f5e9);color:var(--green-dark,#1b5e20)!important;}
+  .nav-dropdown-menu a::after{display:none!important;}
+  .btn-nav-cta{background:var(--green);color:#fff!important;padding:9px 18px;border-radius:8px;font-weight:600;font-size:.85rem;margin-left:26px;text-decoration:none!important;transition:background .15s ease,transform .15s ease;white-space:nowrap;}
+  .btn-nav-cta::after{display:none!important;}
+  .btn-nav-cta:hover{background:var(--green-dark);transform:translateY(-1px);}
+  @media (max-width:860px){.btn-nav-cta{display:none;}}
 
   .hero{
     padding:88px 0 64px;
@@ -288,11 +301,18 @@
   <div class="wrap">
     <a href="index.html" class="logo">Agenti<span>AI</span> Italia</a>
     <nav>
-      <a href="index.html#servizi">Servizi</a>
+      <div class="nav-dropdown">
+        <a href="index.html#servizi">Servizi <svg viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+        <div class="nav-dropdown-menu">
+          <a href="agenti-ai.html">Agenti AI &amp; Automazione</a>
+          <a href="ecommerce.html">E-commerce</a>
+          <a href="audit-ai.html">Consulenza &amp; Audit AI</a>
+        </div>
+      </div>
       <a href="#come-funziona">Come funziona</a>
       <a href="#per-chi">Per chi</a>
       <a href="#faq">FAQ</a>
-      <a href="#contatti">Contatti</a>
+      <a href="#contatti" class="btn-nav-cta">Richiedi un audit gratuito</a>
     </nav>
   </div>
 </header>
