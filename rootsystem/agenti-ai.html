@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agenti AI & Automazione — AgentiAI Italia</title>
+<meta name="description" content="Costruiamo agenti AI per backoffice ed email, e agenti WhatsApp per risposta lead. Stato reale di ogni asset, nessuna demo venduta come prodotto finito.">
+<style>
+  :root{
+    --green:#2e7d32;
+    --green-dark:#1b5e20;
+    --cream:#f5f5f0;
+    --ink:#1a1a1a;
+    --gray:#5a5a5a;
+    --border:#e2e2da;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.6;
+  }
+  .wrap{max-width:960px;margin:0 auto;padding:0 24px;}
+  header{
+    background:var(--ink);
+    color:#fff;
+    padding:14px 0;
+  }
+  header .wrap{display:flex;justify-content:space-between;align-items:center;}
+  .logo{font-weight:700;font-size:1.1rem;color:#fff;text-decoration:none;}
+  .logo span{color:#8bc34a;}
+  nav a{color:#ccc;text-decoration:none;margin-left:24px;font-size:0.92rem;}
+  nav a:hover{color:#fff;}
+
+  .hero{
+    padding:72px 0 56px;
+    text-align:center;
+    border-bottom:1px solid var(--border);
+  }
+  .badge{
+    display:inline-block;
+    background:#e8f5e9;
+    color:var(--green-dark);
+    padding:6px 14px;
+    border-radius:20px;
+    font-size:0.8rem;
+    font-weight:600;
+    letter-spacing:0.02em;
+    margin-bottom:20px;
+  }
+  .hero h1{
+    font-size:2.4rem;
+    line-height:1.15;
+    margin-bottom:18px;
+    letter-spacing:-0.01em;
+  }
+  .hero p.lead{
+    font-size:1.1rem;
+    color:var(--gray);
+    max-width:640px;
+    margin:0 auto 32px;
+  }
+  .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+  .btn{
+    display:inline-block;
+    padding:13px 26px;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:600;
+    font-size:0.95rem;
+    transition:opacity 0.15s;
+  }
+  .btn:hover{opacity:0.85;}
+  .btn-primary{background:var(--green);color:#fff;}
+  .btn-secondary{background:#fff;color:var(--ink);border:1px solid var(--border);}
+
+  section{padding:56px 0;}
+  section h2{font-size:1.7rem;margin-bottom:12px;}
+  section .section-lead{color:var(--gray);max-width:600px;margin-bottom:36px;}
+
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:20px;
+  }
+  .card{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:26px;
+  }
+  .card h3{font-size:1.1rem;margin-bottom:10px;}
+  .card p{color:var(--gray);font-size:0.93rem;margin-bottom:12px;}
+  .card a.card-link{font-size:0.88rem;font-weight:600;color:var(--green-dark);text-decoration:none;}
+  .card a.card-link:hover{text-decoration:underline;}
+  .status{
+    display:inline-block;
+    font-size:0.74rem;
+    font-weight:700;
+    padding:3px 10px;
+    border-radius:12px;
+    letter-spacing:0.02em;
+  }
+  .status-live{background:#e8f5e9;color:var(--green-dark);}
+  .status-pilot{background:#fff3e0;color:#e65100;}
+  .status-method{background:#e3f2fd;color:#0d47a1;}
+
+  .faq-item{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:20px 22px;
+    margin-bottom:12px;
+  }
+  .faq-item h4{font-size:0.98rem;margin-bottom:8px;}
+  .faq-item p{font-size:0.9rem;color:var(--gray);margin:0;}
+
+  .process{background:#fff;}
+  .steps{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:24px;
+    margin-top:28px;
+  }
+  .step-num{
+    width:32px;height:32px;
+    border-radius:50%;
+    background:var(--green);
+    color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-weight:700;
+    margin-bottom:12px;
+    font-size:0.9rem;
+  }
+  .step h4{font-size:1rem;margin-bottom:6px;}
+  .step p{font-size:0.88rem;color:var(--gray);}
+
+  .honest-box{
+    background:#fff8e1;
+    border:1px solid #ffe082;
+    border-radius:10px;
+    padding:20px 24px;
+    font-size:0.9rem;
+    color:#5d4a00;
+    margin-top:24px;
+  }
+  .honest-box strong{color:#3d3200;}
+
+  .cta-final{
+    background:var(--ink);
+    color:#fff;
+    text-align:center;
+    padding:60px 0;
+  }
+  .cta-final h2{color:#fff;margin-bottom:12px;}
+  .cta-final p{color:#bbb;margin-bottom:28px;max-width:500px;margin-left:auto;margin-right:auto;}
+
+  footer{
+    background:#fff;
+    border-top:1px solid var(--border);
+    padding:32px 0;
+    font-size:0.85rem;
+    color:var(--gray);
+  }
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+  footer a{color:var(--gray);text-decoration:underline;}
+
+  @media (max-width:640px){
+    .hero h1{font-size:1.8rem;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a href="index.html" class="logo">Agenti<span>AI</span> Italia</a>
+    <nav>
+      <a href="index.html#servizi">Servizi</a>
+      <a href="#cosa-costruiamo">Agenti AI</a>
+      <a href="#come-lavoriamo">Come lavoriamo</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contatti">Contatti</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="badge">AGENTI AI &amp; AUTOMAZIONE</span>
+    <h1>Agenti AI che fanno un lavoro vero, non una demo</h1>
+    <p class="lead">Costruiamo agenti AI per compiti specifici e verificabili: email e calendario in backoffice, risposta a lead su WhatsApp. Ogni agente ha uno stato reale dichiarato — provato ogni giorno, in pilota, o ancora in rodaggio — nessuna etichetta "pronto all'uso" messa a caso.</p>
+    <div class="cta-row">
+      <a href="#contatti" class="btn btn-primary">Parliamo del tuo caso</a>
+      <a href="#cosa-costruiamo" class="btn btn-secondary">Guarda gli agenti</a>
+    </div>
+  </div>
+</section>
+
+<section id="cosa-costruiamo">
+  <div class="wrap">
+    <h2>Cosa costruiamo</h2>
+    <p class="section-lead">Due famiglie di agenti, con due stati molto diversi. Lo diciamo entrambi, senza ammorbidirli.</p>
+    <div class="grid">
+      <div class="card">
+        <span class="status status-live">NOSTRO CORE — PROVATO OGNI GIORNO</span>
+        <h3>Agente email &amp; calendario (backoffice)</h3>
+        <p>Legge email, le smista, propone o esegue azioni su calendario, automatizza processi ripetitivi di ufficio. È l'agente che usiamo noi stessi ogni giorno sul nostro backoffice assicurativo, prima di proporlo a chiunque altro. Non è una demo: è il lavoro quotidiano.</p>
+      </div>
+      <div class="card">
+        <span class="status status-method">PROTOTIPO REALE — IN RODAGGIO</span>
+        <h3>Agente WhatsApp risposta lead — Diana/Synapsy</h3>
+        <p>Sistema (n8n + OpenWA) che risponde automaticamente ai lead su WhatsApp. Il campo di configurazione è generico ("Verticale: generico"), quindi lo stesso motore è adattabile a contesti diversi — incluso l'intake/prenotazioni di uno studio medico. <strong>Stato onesto:</strong> OpenWA è giù da 6 giorni e in questo momento non risponde a nessuno; zero lead reali processati fino ad oggi; negli ultimi 10 giorni abbiamo trovato e corretto 10 bug gravi, incluso uno che saltava un vincolo normativo RUI. È un prototipo reale che stiamo rodando, non un prodotto in produzione provata.</p>
+      </div>
+      <div class="card">
+        <span class="status status-pilot">APPLICABILE, NON ANCORA TESTATO LÌ</span>
+        <h3>Adattamento verticale: studi medici / intake pazienti</h3>
+        <p>Il motore Diana/Synapsy è pensato per essere riconfigurato per verticale: per uno studio medico significherebbe intake iniziale e gestione prenotazioni via WhatsApp. Non abbiamo ancora un caso reale con un cliente paziente di uno studio medico — lo segnaliamo come possibilità tecnica concreta, non come caso già fatto.</p>
+      </div>
+    </div>
+
+    <div class="honest-box">
+      <strong>Perché lo scriviamo così esplicito:</strong> l'agente email/calendario lo usiamo ogni giorno e sappiamo cosa può fare. L'agente WhatsApp è un prototipo reale, attualmente fermo per un problema tecnico (OpenWA down) e senza ancora un lead reale gestito. Se il tuo progetto ha bisogno esattamente di quest'ultimo, te lo diciamo prima di accettare l'incarico, e decidiamo insieme se procedere come test trasparente o aspettare che sia più stabile.
+    </div>
+  </div>
+</section>
+
+<section class="process" id="come-lavoriamo">
+  <div class="wrap">
+    <h2>Come lavoriamo su un agente</h2>
+    <p class="section-lead">Stesso metodo per ogni agente, a prescindere dallo stato di maturità: scope scritto, test veri, nessuna sorpresa.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h4>Scoping della funzione</h4>
+        <p>Definiamo per iscritto esattamente cosa deve fare l'agente — non "automatizza tutto", ma azioni specifiche e verificabili.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h4>Integrazione sistemi</h4>
+        <p>Collegamento ai tuoi strumenti reali: email, calendario, WhatsApp, CRM — solo quelli necessari allo scope definito.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h4>Test</h4>
+        <p>Verifica su casi reali prima della consegna, non solo in ambiente di sviluppo. Se qualcosa non regge, lo diciamo e lo correggiamo prima di consegnare.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h4>Consegna documentata</h4>
+        <p>Documentazione scritta di cosa fa l'agente, cosa non fa, e come intervenire se qualcosa va storto.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <h4>Guardrail &amp; escalation umana</h4>
+        <p>Regole esplicite su cosa l'agente può decidere da solo e cosa deve passare a un umano — specialmente su dati sensibili o vincoli normativi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <h2>Domande frequenti sugli agenti AI</h2>
+    <p class="section-lead">Le domande che ci fanno davvero i clienti quando parliamo di agenti, risposte senza giri di parole.</p>
+    <div class="faq-item">
+      <h4>Che differenza c'è tra un chatbot e un agente AI?</h4>
+      <p>Un chatbot risponde a domande con testo. Un agente AI esegue azioni concrete nei tuoi sistemi — smista un'email, aggiorna un calendario, apre una conversazione WhatsApp con un lead — e le esegue con regole scritte su cosa può fare da solo e cosa deve passare a una persona. Se un fornitore ti chiama "agente" qualcosa che si limita a rispondere testo senza toccare nessun sistema, è un chatbot con un nome diverso.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Quanto costa un agente AI?</h4>
+      <p>Non c'è una tariffa fissa pubblicata: il prezzo dipende dal numero di funzioni, dai sistemi da integrare e dal livello di autonomia richiesto. Ogni progetto parte con un audit gratuito e un preventivo scritto a milestone, prima di qualsiasi impegno.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Se parliamo di uno studio medico, come viene gestito il GDPR e i dati sensibili dei pazienti?</h4>
+      <p>I dati sanitari sono dati sensibili ai sensi del GDPR e richiedono base giuridica, informativa e misure di sicurezza specifiche prima di qualsiasi automazione che li tocchi. Ad oggi non abbiamo ancora gestito dati sanitari reali di pazienti con l'agente WhatsApp: se un progetto in questo verticale parte, il tema privacy/GDPR va chiuso per iscritto — con il tuo DPO o consulente privacy, se lo hai — prima di collegare l'agente a qualunque dato reale di paziente, non dopo.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Chi controlla cosa risponde l'agente?</h4>
+      <p>Lo scope scritto definisce i guardrail: cosa l'agente può decidere/rispondere da solo e cosa deve essere escalato a un umano. Per l'agente WhatsApp (Diana/Synapsy) questo è particolarmente critico — nei 10 giorni scorsi abbiamo corretto un bug che saltava un vincolo normativo RUI, proprio un caso in cui il controllo umano/il guardrail doveva intervenire e non lo faceva. È il motivo per cui testiamo e correggiamo prima di proporre l'agente a un cliente pagante su un nuovo verticale.</p>
+    </div>
+    <div class="faq-item">
+      <h4>L'agente WhatsApp è pronto da usare oggi?</h4>
+      <p>No, e preferiamo dirlo chiaro: OpenWA (il componente che collega l'agente a WhatsApp) è giù da 6 giorni al momento di scrivere questa pagina, quindi l'agente non può rispondere a nessun lead in questo momento. È un prototipo reale in fase di rodaggio, non un prodotto in produzione provata. Se il tuo progetto ha bisogno di questo agente, lo valutiamo insieme con questa premessa sul tavolo.</p>
+    </div>
+    <div class="faq-item">
+      <h4>L'agente email/calendario è nella stessa situazione?</h4>
+      <p>No. Quello è il nostro core, lo usiamo ogni giorno sul nostro stesso backoffice. È l'asset con lo stato più solido che offriamo oggi.</p>
+    </div>
+  </div>
+</section>
+
+<div class="cta-final" id="contatti">
+  <div class="wrap">
+    <h2>Parliamo del tuo caso d'uso</h2>
+    <p>Un audit gratuito per capire se ha senso un agente email/calendario, un agente WhatsApp, o nessuno dei due ancora — senza impegno.</p>
+    <a href="mailto:info@rootsystem.it" class="btn btn-primary">info@rootsystem.it</a>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div>&copy; 2026 AgentiAI Italia — Luca Di Rienzo</div>
+    <div><a href="index.html">Home</a> · <a href="privacy.html">Informativa sulla privacy</a></div>
+  </div>
+</footer>
+
+</body>
+</html>
